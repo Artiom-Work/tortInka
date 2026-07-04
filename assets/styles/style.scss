@@ -1,0 +1,22 @@
+// connecting general scss files
+@use "./base/normolize";
+@use "./base/fonts";
+@use "./base/variables";
+@use "./base/utils";
+@use "./base/globals";
+@use "./base/animation";
+//common-blocks
+@use "./blocks/common-blocks/logo";
+@use "./blocks/common-blocks/parallax-bg";
+@use "./blocks/common-blocks/buttons";
+// @use "./blocks/common-blocks/section";
+//blocks
+@use "./blocks/header";
+@use "./blocks/hero";
+
+@use "./blocks/footer";
+// .header,
+// main > *:not(:last-child),
+// .footer {
+//   display: none !important;
+// }

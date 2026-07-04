@@ -1,0 +1,31 @@
+@use "../../healpers" as *;
+/* ===  Styles from parallax-blocks === */
+.parallax-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  &--main {
+    z-index: 0;
+  }
+
+  &--secondary {
+    --parallax-shift: 10%;
+
+    top: calc(var(--parallax-shift) * -1);
+    min-height: calc(100% + var(--parallax-shift) * 2);
+    z-index: 2;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+
+    @supports (animation-timeline: view()) {
+      animation: parallax-shift linear both;
+      animation-duration: 1ms;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}

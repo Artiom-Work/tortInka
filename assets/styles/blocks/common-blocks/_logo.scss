@@ -1,0 +1,36 @@
+@use "../../healpers" as *;
+/* ==== Logo styles ==== */
+.logo {
+  &__image {
+    width: rem(95);
+    height: rem(75);
+    filter: drop-shadow(
+      rgba(255, 255, 255, 0.25) #{rem(0)} #{rem(1)} #{rem(4)}
+    );
+    transition-duration: var(--transition-duration);
+  }
+
+  @include hover {
+    img {
+      filter: drop-shadow(
+        rgba(255, 255, 255, 0.25) #{rem(0)} #{rem(1)} #{rem(8)}
+      );
+    }
+  }
+
+  @include speciall-active {
+    filter: brightness(80%);
+  }
+}
+
+@include mobile-media {
+  .logo {
+    &__image {
+      width: rem(67);
+      height: rem(50);
+    }
+  }
+}
+/* ========================= */
+/* ====END  Logo styles ==== */
+/* ========================= */

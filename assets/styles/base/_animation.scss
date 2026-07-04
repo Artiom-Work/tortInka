@@ -1,0 +1,49 @@
+@use "../healpers" as *;
+/* === Animations ===*/
+@keyframes scrolling-sticky {
+  to {
+    box-shadow: 0 0 1rem 1rem var(--color-rose-opasity-25);
+    background-color: var(--color-dark-opasity-90);
+  }
+}
+@keyframes parallax-shift {
+  from {
+    transform: translate3d(0, calc(var(--parallax-shift) * -1), 0);
+  }
+  to {
+    transform: translate3d(0, var(--parallax-shift), 0);
+  }
+}
+// @keyframes scale-off {
+//   0% {
+//     scale: 0;
+//   }
+//   100% {
+//     scale: 1;
+//   }
+// }
+
+// @keyframes show-modal {
+//   0% {
+//     scale: 0.75;
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//     scale: 1;
+//   }
+// }
+
+// @keyframes hide-unit {
+//   0%,
+//   1% {
+//     visibility: visible;
+//   }
+//   100% {
+//     visibility: hidden;
+//     display: none;
+//   }
+// }
+/*  ======================= */
+/* ==== END Animations ==== */
+/*  ======================= */

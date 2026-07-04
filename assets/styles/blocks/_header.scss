@@ -1,0 +1,85 @@
+@use "../healpers" as *;
+@use "nav";
+@use "mobile-menu";
+
+// /* ==== Block header ==== */
+.header {
+  height: var(--header-height);
+  position: sticky;
+  z-index: 5;
+  top: 0;
+  background-color: transparent;
+
+  animation-name: scrolling-sticky;
+  animation-fill-mode: both;
+  animation-timeline: scroll();
+  animation-range: rem(50) rem(75);
+
+  .container {
+    @include flex-space-between;
+
+    height: inherit;
+    position: relative;
+  }
+
+  &__logo {
+    position: absolute;
+    left: 50%;
+    translate: -50% 0;
+  }
+
+  &__nav {
+    max-width: rem(800);
+    width: 100%;
+    margin-inline: auto;
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: fluid(100, 20);
+
+      li:nth-child(2) {
+        margin-right: auto;
+      }
+    }
+  }
+
+  &__soc1als {
+    display: flex;
+    align-items: center;
+    gap: rem(20);
+
+    a {
+      img {
+        @include square(rem(36));
+      }
+
+      @include speciall-active {
+        filter: brightness(50%);
+      }
+    }
+  }
+}
+
+@include mobile-medium-media {
+  .header {
+    &__soc1als {
+      a {
+        img {
+          @include square(rem(24));
+        }
+      }
+    }
+  }
+}
+@include mobile-s-media {
+  .header {
+    &__soc1als {
+      gap: rem(12);
+    }
+  }
+}
+/* ============================ */
+/* ==== END  Block header  ==== */
+/* ============================ */

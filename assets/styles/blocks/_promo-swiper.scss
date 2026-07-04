@@ -1,0 +1,48 @@
+@use "../healpers" as *;
+/* === Promo slider's navigations === */
+// .promo-swiper {
+//   position: relative;
+
+//   &__pagination {
+//     position: absolute;
+//     bottom: rem(57);
+//     left: calc(50% - 805px);
+//     z-index: 10;
+//     display: flex;
+//     justify-content: start;
+//     gap: rem(11);
+//   }
+
+//   &__btn {
+//     @include reset-button;
+
+//     background-color: var(--color-green-dark);
+//     width: rem(75);
+//     height: rem(60);
+//     border-radius: var(--border-radius-extra-small);
+
+//     svg {
+//       width: rem(32);
+//       height: rem(22);
+//       fill: var(--color-light);
+//     }
+
+//     @include hover {
+//       filter: brightness(90%);
+//     }
+
+//     @include speciall-active {
+//       scale: 0.9;
+//     }
+//   }
+// }
+
+// @include desktop-media {
+//   .promo-swiper {
+//     position: relative;
+
+//     &__pagination {
+//       left: var(--container-padding-x);
+//     }
+//   }
+// }

@@ -1,0 +1,28 @@
+@use "../../healpers" as *;
+
+/* ===  Buttons styles === */
+
+.button {
+  @include reset-button;
+  @include fluid-text(20, 16);
+
+  font-family: var(--font-family);
+  padding-block: rem(15);
+  padding-inline: fluid(40, 30);
+  letter-spacing: 0.07em;
+  font-weight: 600;
+  background-image: var(--accent-grad);
+  color: var(--color-gray-light);
+  text-shadow: var(--links-text-shadow);
+  border-radius: var(--border-radius);
+  will-change: transform;
+
+  @include hover {
+    filter: brightness(80%);
+  }
+
+  @include speciall-active {
+    scale: 0.97;
+    filter: brightness(60%);
+  }
+}

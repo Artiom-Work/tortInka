@@ -1,0 +1,61 @@
+@use "../healpers" as *;
+
+.hero {
+  position: relative;
+  overflow: clip;
+
+  .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-block: fluid(125, 90) rem(100);
+    text-align: center;
+  }
+
+  &__body {
+    position: relative;
+    z-index: 3;
+  }
+
+  &__title {
+    max-width: rem(620);
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: fluid(347, 280);
+    letter-spacing: 0.03em;
+    text-shadow: var(--accent-text-shadow);
+    line-height: 1.4;
+  }
+
+  &__subtitle {
+    @include fluid-text(50, 32);
+
+    color: var(--color-accent-third);
+    font-family: var(--third-family);
+    font-weight: 700;
+    max-width: rem(200);
+    line-height: 1;
+    margin-inline: auto;
+    margin-bottom: fluid(30, 10);
+    text-shadow: var(--accent-text-shadow);
+  }
+
+  &__image {
+    position: absolute;
+    z-index: 1;
+    width: fluid(345, 287);
+    height: fluid(300, 250);
+    bottom: fluid(300, 250);
+    object-fit: cover;
+  }
+}
+
+@include mobile-media {
+  .hero {
+    &__title {
+      line-height: 1.5;
+    }
+  }
+}

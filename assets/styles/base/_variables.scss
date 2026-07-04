@@ -1,0 +1,58 @@
+@use "../healpers" as *;
+/* ==== Variables ==== */
+:root {
+  --color-light: #ffffff;
+  --color-dark: #0e0c0c;
+  --color-dark-opasity-50: rgba(34, 31, 31, 0.5);
+  --color-dark-opasity-75: rgba(34, 31, 31, 0.75);
+  --color-dark-opasity-90: rgba(34, 31, 31, 0.9);
+  --color-gray: #7a7373;
+  --color-gray-light: #cbb0c1;
+  --color-rose: #ae4f74;
+  --color-rose-opasity-25: rgba(174, 79, 116, 0.25);
+  --color-rose-opasity-50: rgba(174, 79, 116, 0.5);
+  --color-red: #74062f;
+  --color-purple: #870395;
+  --color-purple-opasity-10: rgba(135, 3, 149, 0.1);
+  --color-purple-opasity-50: rgba(135, 3, 149, 0.5);
+
+  --color-accent: var(--color-rose);
+  --color-accent-secondary: var(--color-purple);
+  --color-accent-third: var(--color-red);
+
+  --accent-grad: #{linear-gradient(
+      45deg,
+      var(--color-accent),
+      var(--color-accent-secondary)
+    )};
+
+  --links-text-shadow: 0 #{rem(3)} #{rem(3)} var(--color-dark-opasity-50);
+  --accent-text-shadow: 0 #{rem(2)} #{rem(4)} var(--color-dark-opasity-90);
+  --font-family: "Montserrat", sans-serif;
+  --second-family: "MiamaNueva", sans-serif;
+  --third-family: "Rage", sans-serif;
+
+  --border-radius: #{rem(30)};
+  --border-radius-extra-small: #{rem(5)};
+  --border-radius-small: #{rem(15)};
+  --border-radius-medium: #{rem(20)};
+  --border-radius-large: #{rem(60)};
+
+  --container-width: #{rem(1440)};
+  --container-padding-x: #{rem(20)};
+  --header-height: #{rem(95)};
+
+  --transition-duration: 0.3s;
+  --transition-duration-long: 0.6s;
+
+  @include mobile-media {
+    --header-height: #{rem(60)};
+  }
+
+  @include mobile-s-media {
+    --container-padding-x: #{rem(10)};
+  }
+}
+/* ========================= */
+/* ==== END  Variables  ==== */
+/* ========================= */
