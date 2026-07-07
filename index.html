@@ -13,10 +13,277 @@
 		content=""> -->
 	<title>tortInka</title>
 	<!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> -->
+
+	<style id="preloader-critical-css">
+		/* ===  Preloader styles === */
+		html.is-loading,
+		html.is-loading body {
+			overflow: hidden;
+			height: 100%;
+		}
+
+		.preloader {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			z-index: 10;
+			width: 100%;
+			height: 100vh;
+			background-color: #0e0c0c;
+			opacity: 1;
+			transition-duration: 1s;
+		}
+
+		.preloader.is-hidden {
+			animation: hide-preloader 1.5s ease-out;
+		}
+
+		.preloader__backdrop {
+			position: absolute;
+			overflow: hidden;
+			width: 100%;
+			height: 100%;
+			left: 50%;
+			top: 50%;
+			translate: -50% -50%;
+			border-radius: 50%;
+			background: radial-gradient(circle, rgba(116, 6, 47, 0.75) 0%, rgba(116, 6, 47, 0.01) 30%, transparent 100%);
+			filter: blur(30px);
+			pointer-events: none;
+		}
+
+		.preloader-block {
+			position: relative;
+			display: inline-block;
+		}
+
+		.preloader-block[aria-busy=true] span {
+			visibility: hidden;
+		}
+
+		.preloader-block--xs .loader--sm {
+			width: 2.375rem;
+			height: 1.875rem;
+		}
+
+		.preloader-block--xs .loader__trace-svg--sm {
+			top: -0.125rem;
+		}
+
+		.loader {
+			position: relative;
+			display: inline-flex;
+		}
+
+		.loader--full {
+			background-color: transparent;
+			width: 16.25rem;
+			height: 14.5625rem;
+		}
+
+		.loader--sm {
+			width: 3.5rem;
+			height: 3.125rem;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.loader__art {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+
+		.loader__trace {
+			fill: none;
+			stroke-linecap: round;
+			stroke-dasharray: 0.0001 1;
+			stroke-dashoffset: 1;
+			animation: loader-trace 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+		}
+
+		.loader__trace-svg {
+			position: absolute;
+			top: -1.25rem;
+			left: 0.25rem;
+			right: -0.25rem;
+			bottom: 0;
+			width: 100%;
+			height: 130%;
+			overflow: visible;
+			pointer-events: none;
+		}
+
+		.loader__trace-svg--sm {
+			top: -0.3125rem;
+			left: 0;
+		}
+
+		.loader__trace--halo {
+			stroke-width: 30;
+			filter: blur(0.4375rem);
+			opacity: 0.5;
+		}
+
+		.loader__trace--core {
+			stroke-width: 6;
+			filter: blur(0.0625rem) drop-shadow(0 0 0.375rem rgba(255, 255, 255, 0.9));
+			opacity: 1;
+		}
+
+		.loader__sheen {
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			mix-blend-mode: overlay;
+			mask-image: url("../../images/preloader/logo-tortInka-dark-pink.svg");
+			mask-repeat: no-repeat;
+			mask-position: center;
+			mask-size: contain;
+			-webkit-mask-image: url("../../images/preloader/logo-tortInka-dark-pink.svg");
+			-webkit-mask-repeat: no-repeat;
+			-webkit-mask-position: center;
+			-webkit-mask-size: contain;
+			background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%);
+			background-size: 40% 100%;
+			background-repeat: no-repeat;
+			background-position: -40% 0;
+			animation: loader-sheen 2.8s ease-in infinite;
+		}
+
+		@keyframes loader-trace {
+			0% {
+				stroke-dashoffset: 1;
+				opacity: 0.5;
+			}
+
+			15% {
+				opacity: 1;
+			}
+
+			35% {
+				opacity: 0.5;
+			}
+
+			60% {
+				opacity: 1;
+			}
+
+			85% {
+				opacity: 0.6;
+			}
+
+			100% {
+				stroke-dashoffset: 0;
+				opacity: 1;
+			}
+		}
+
+		@keyframes loader-sheen {
+			0% {
+				background-position: -40% 0;
+			}
+
+			22% {
+				background-position: 140% 0;
+			}
+
+			100% {
+				background-position: 140% 0;
+			}
+		}
+
+		@keyframes hide-preloader {
+			0% {
+				opacity: 1;
+			}
+
+			99% {
+				opacity: 0;
+			}
+
+			100% {
+				display: none;
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+
+			.loader__trace,
+			.loader__halo,
+			.loader__core,
+			.loader__sheen {
+				animation: none;
+			}
+		}
+	</style>
+
+	<script>document.documentElement.classList.add('is-loading');</script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			var preloader = document.querySelector('[data-preloader]');
+			if (!preloader) return;
+
+			function hide() {
+				preloader.classList.add('is-hidden');
+				document.documentElement.classList.remove('is-loading');
+				setTimeout(function () {
+					preloader.remove();
+				}, 400);
+			}
+
+			window.addEventListener('load', hide);
+			setTimeout(hide, 8000);
+		});
+	</script>
+
 	<link rel="stylesheet" href="./assets//styles/style.css">
 </head>
 
 <body>
+	<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+		<defs>
+			<linearGradient id="logo-sheen-gradient" x1="0" y1="0" x2="1" y2="0">
+				<stop offset="0" stop-color="#fff" stop-opacity="0" />
+				<stop offset="0.5" stop-color="#fff" stop-opacity="0.9" />
+				<stop offset="1" stop-color="#fff" stop-opacity="0" />
+			</linearGradient>
+
+			<linearGradient id="logo-trace-gradient" x1="0" y1="0" x2="0" y2="1">
+				<stop offset="0" stop-color="#fff" stop-opacity="0" />
+				<stop offset="0.5" stop-color="#fff" stop-opacity="1" />
+				<stop offset="1" stop-color="#fff" stop-opacity="0" />
+			</linearGradient>
+		</defs>
+	</svg>
+
+	<div class="preloader" data-preloader>
+		<div class="preloader__backdrop"></div>
+
+		<div class="loader loader--full">
+			<img class="loader__art" src="./assets/images/preloader/logo-tortInka-dark-pink.svg" width="250" height="197"
+				alt="" aria-hidden="true">
+
+			<svg class="loader__trace-svg" viewBox="0 0 259 233" aria-hidden="true">
+				<path class="loader__trace loader__trace--halo"
+					d="M244.569 27.9018C278.632 94.7141 126.186 204.5 125.351 204.5C124.515 204.5 -23.9806 112.188 3.35934 35.7863C30.6992 -40.6154 122.713 35.2501 122.22 35.2508C121.728 35.2515 210.507 -38.9105 244.569 27.9018Z"
+					pathLength="1" fill="none" stroke="#fff"></path>
+
+				<path class="loader__trace loader__trace--core"
+					d="M244.569 27.9018C278.632 94.7141 126.186 204.5 125.351 204.5C124.515 204.5 -23.9806 112.188 3.35934 35.7863C30.6992 -40.6154 122.713 35.2501 122.22 35.2508C121.728 35.2515 210.507 -38.9105 244.569 27.9018Z"
+					pathLength="1" fill="none" stroke="#fff"></path>
+			</svg>
+
+			<div class="loader__sheen"></div>
+		</div>
+	</div>
+
 	<header class="header">
 		<div class="container">
 			<a class="header__logo logo" href="index.html">
@@ -105,7 +372,7 @@
 
 	<main>
 		<section class="hero" aria-labelledby="hero-title">
-			<h1 class="visually-hidden"></h1>
+			<h1 class="visually-hidden">Торты на заказ в Гомеле</h1>
 
 			<div class="parallax-bg parallax-bg--main"
 				style="background: url('./assets/images/hero/hero-background-image-2.webp') no-repeat top center / cover;">
@@ -132,7 +399,31 @@
 			</div>
 		</section>
 
-		<div style="background-color: #fff;">
+		<div class="container">
+			<div class="image-slot preloader-block">
+				<img src="./assets/images/website/cake-1.png" width="600" height="743" alt="Торт">
+			</div>
+			<div class="image-slot preloader-block">
+				<img src="./assets/images/website/cake-2.png" width="600" height="743" alt="Торт">
+			</div>
+			<div class="image-slot preloader-block">
+				<img src="./assets/images/website/cake-3.png" width="600" height="743" alt="Торт">
+			</div>
+			<div class="image-slot preloader-block">
+				<img src="./assets/images/website/cake-4.png" width="600" height="743" alt="Торт">
+			</div>
+			<div class="image-slot preloader-block">
+				<img src="./assets/images/website/cake-5.png" width="600" height="743" alt="Торт">
+			</div>
+		</div>
+		<form action="" data-ajax-form>
+			<input type="text">
+			<button class="button preloader-block preloader-block--xs" type="submit">
+				<span>Отправить</span>
+			</button>
+			<p class="form__status" aria-live="polite"></p>
+		</form>
+		<!-- <div style="background-color: #fff;">
 			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem laborum necessitatibus obcaecati facilis
 			ut
 			sequi esse fugit minima? Exercitationem, tenetur veniam! Labore, natus animi dolore voluptatem maiores dolores
@@ -984,13 +1275,13 @@
 			delectus beatae fugiat accusantium! Maxime et vitae dolorem possimus ipsam! Dolore soluta accusantium, hic saepe
 			facere exercitationem molestias totam enim odit est architecto, dolorem magnam delectus natus praesentium fugit
 			maxime magni, quidem quasi consectetur quas mollitia excepturi doloremque! Architecto voluptas obcaecati qui esse!
-		</div>
+		</div> -->
 	</main>
 
 	<footer class="footer">
 		<div class="container">
 			<a class="footer__logo logo logo--footer" href="index.html">
-				<img class="logo__image" src="assets/images/logo-dark-big.svg" width="183" height="41" alt="zona's logotupe">
+				<img class="logo__image" src="assets/images/logo-dark-pink.svg" width="183" height="41" alt="zona's logotupe">
 			</a>
 
 		</div>
@@ -998,7 +1289,7 @@
 
 	<!-- <script src="assets/libs/swiper/swiper-bundle.min.js"></script> -->
 	<!-- <script type="module" src="assets/js/promo-slider.js"></script> -->
-	<!-- <script type="module" src="assets/js/main.js"></script> -->
+	<script type="module" src="assets/js/main.js"></script>
 </body>
 
 </html>

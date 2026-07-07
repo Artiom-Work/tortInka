@@ -3,43 +3,58 @@
 
 // new Header()
 // new ExpandableContentCollection()
+import { showInlineLoader, hideInlineLoader } from './inline-preloader.js';
+
+document.querySelectorAll('.image-slot').forEach((slot) => {
+	const img = slot.querySelector('img');
+	if (!img) return;
+
+	if (img.complete && img.naturalWidth > 0) return;
+
+	showInlineLoader(slot);
+
+	const finish = () => hideInlineLoader(slot);
+	img.addEventListener('load', finish);
+	img.addEventListener('error', finish);
+});
 
 
-const hero = document.querySelector('.hero');
-const mainBg = document.querySelector('.parallax-bg--main');
+document.querySelectorAll('form[data-ajax-form]').forEach((form) => {
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault();
 
-// Максимальное смещение вниз (в пикселях) – например, 20% от высоты секции
-const maxTranslate = hero.offsetHeight * 1;
+		const button = form.querySelector('button[type="submit"]');
+		const statusEl = form.querySelector('.form__status');
 
-function updateParallax() {
-	const rect = hero.getBoundingClientRect();
-	const windowHeight = window.innerHeight;
+		if (!button) return;
 
-	// Прогресс от 0 до 1: 0 – секция только появилась снизу, 1 – полностью ушла наверх
-	const progress = Math.min(1, Math.max(0, (windowHeight - rect.top) / (rect.height + windowHeight)));
+		button.disabled = true;
+		showInlineLoader(button);
+		if (statusEl) statusEl.textContent = '';
 
-	// Смещаем фон вниз (положительное значение)
-	const translateY = progress * maxTranslate;
+		try {
+			const response = await fakeSubmitRequest(form);// ← временная имитация, см. ниже
 
-	mainBg.style.transform = `translate3d(0, ${translateY}px, 0)`;
+			if (!response.ok) {
+				throw new Error(`Сервер вернул ошибку: ${response.status}`);
+			}
+
+			if (statusEl) statusEl.textContent = 'Спасибо! Заявка отправлена.';
+			form.reset();
+
+		} catch (error) {
+			console.error('Ошибка отправки формы:', error);
+			if (statusEl) statusEl.textContent = 'Не удалось отправить форму. Попробуйте ещё раз.';
+
+		} finally {
+			hideInlineLoader(button);
+			button.disabled = false;
+		}
+	});
+});
+
+function fakeSubmitRequest(form) {
+	return new Promise((resolve) => {
+		setTimeout(() => resolve({ ok: true }), 8000);
+	});
 }
-
-// // Оптимизация через requestAnimationFrame
-// let ticking = false;
-// window.addEventListener('scroll', () => {
-// 	if (!ticking) {
-// 		requestAnimationFrame(() => {
-// 			updateParallax();
-// 			ticking = false;
-// 		});
-// 		ticking = true;
-// 	}
-// });
-
-// // Обновляем при изменении размера окна и загрузке
-// window.addEventListener('resize', () => {
-// 	// Пересчитываем maxTranslate при изменении высоты секции
-// 	maxTranslate = hero.offsetHeight * 0.2;
-// 	updateParallax();
-// });
-// window.addEventListener('load', updateParallax);
