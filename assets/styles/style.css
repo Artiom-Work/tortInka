@@ -32,7 +32,7 @@ ul {
   list-style: none;
 }
 
-:where(address[class]) {
+address {
   font-style: normal;
 }
 
@@ -172,6 +172,7 @@ svg * {
   --color-rose-opasity-50: rgba(174, 79, 116, 0.5);
   --color-red: #74062f;
   --color-purple: #870395;
+  --color-purple-dark: #3f1740;
   --color-purple-opasity-10: rgba(135, 3, 149, 0.1);
   --color-purple-opasity-50: rgba(135, 3, 149, 0.5);
   --color-accent: var(--color-rose);
@@ -310,8 +311,8 @@ body {
   display: flex;
   flex-direction: column;
   font-family: var(--font-family);
-  color: var(--color-gray);
-  background-color: var(--color-dark);
+  color: var(--color-gray-light);
+  background-color: var(--color-purple-dark);
 }
 body:has(#menu-switch:checked) {
   overflow: hidden;
@@ -387,6 +388,19 @@ button[aria-label]::before {
 
 .secondary-accent-color {
   color: var(--color-accent-secondary);
+}
+
+.third-accent-color {
+  color: var(--color-accent-third);
+}
+
+.accent-font {
+  font-size: clamp(1rem, 0.3397887324rem + 2.8169014085vw, 2.875rem);
+  font-family: var(--third-family);
+}
+
+.words-no-wrap {
+  white-space: nowrap;
 }
 
 /* ============================ */
@@ -742,12 +756,135 @@ button[aria-label]::before {
   object-fit: cover;
 }
 
+@media (width <= 63.99875rem) {
+  .hero .parallax-bg--secondary {
+    --parallax-shift: 30%;
+    background-size: 100% 100% !important;
+  }
+}
 @media (width <= 47.99875rem) {
   .hero__title {
     line-height: 1.5;
   }
 }
 /* ==== Block footer ==== */
+.footer {
+  padding-block: clamp(1.25rem, 0.5897887324rem + 2.8169014085vw, 3.125rem);
+  position: relative;
+  overflow: clip;
+}
+.footer .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.footer__logo {
+  display: inline-block;
+  margin-inline: auto;
+}
+.footer__logo img {
+  width: 7.9375rem;
+  height: 6.25rem;
+}
+.footer__slogan {
+  color: var(--color-accent);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-shadow: var(--accent-text-shadow);
+  line-height: 1.4;
+  text-align: center;
+}
+.footer__connect-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.footer__connect-list time {
+  color: var(--color-accent);
+}
+.footer__connect-list li {
+  display: flex;
+  align-items: center;
+  column-gap: clamp(0.625rem, 0.4049295775rem + 0.9389671362vw, 1.25rem);
+}
+.footer__connect-list li svg {
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+}
+.footer__connect-list svg {
+  fill: var(--color-gray-light);
+  stroke: var(--color-accent-third);
+}
+.footer__document, .footer__phone {
+  fill: var(--color-accent);
+  will-change: transform;
+}
+@media (any-hover: hover) {
+  .footer__document:hover, .footer__phone:hover {
+    fill: var(--color-accent-secondary);
+  }
+  .footer__document:hover a, .footer__phone:hover a {
+    background-position: 0% 100%;
+    text-shadow: 0.0625rem 0.125rem 0.3125rem rgba(255, 255, 255, 0.25);
+  }
+}
+@media (any-hover: hover) and (any-hover: none) {
+  .footer__document:active, .footer__phone:active {
+    fill: var(--color-accent-secondary);
+  }
+  .footer__document:active a, .footer__phone:active a {
+    background-position: 0% 100%;
+    text-shadow: 0.0625rem 0.125rem 0.3125rem rgba(255, 255, 255, 0.25);
+  }
+}
+.footer__document:active svg, .footer__phone:active svg {
+  scale: 0.9;
+  transition-duration: var(--transition-duration);
+}
+.footer__document a, .footer__phone a {
+  display: flex;
+  align-items: center;
+  column-gap: 1.25rem;
+  font-weight: 600;
+  background-image: linear-gradient(var(--color-gray-light) 50%, var(--color-accent-secondary) 50%);
+  background-size: 100% 200%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: var(--links-text-shadow);
+}
+.footer__phone {
+  font-size: clamp(1.25rem, 1.161971831rem + 0.3755868545vw, 1.5rem);
+  white-space: nowrap;
+}
+.footer__copyright {
+  font-size: clamp(0.875rem, 0.6549295775rem + 0.9389671362vw, 1.5rem);
+  text-align: center;
+}
+
+@media (width <= 89.99875rem) {
+  .footer .parallax-bg--secondary {
+    --parallax-shift: 20%;
+    background-size: 100% 100% !important;
+  }
+}
+@media (width <= 63.99875rem) {
+  .footer__connect-list {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+@media (width <= 26.87375rem) {
+  .footer__connect-list li svg {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+}
 /* ============================ */
 /* ==== END  Block footer  ==== */
 /* ============================ */

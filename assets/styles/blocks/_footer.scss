@@ -1,6 +1,143 @@
 @use "../healpers" as *;
 /* ==== Block footer ==== */
+.footer {
+  padding-block: fluid(50, 20);
+  position: relative;
+  overflow: clip;
 
+  .container {
+    @include flex-center;
+    position: relative;
+    flex-direction: column;
+    gap: rem(40);
+  }
+
+  &__logo {
+    display: inline-block;
+    margin-inline: auto;
+
+    img {
+      width: rem(127);
+      height: rem(100);
+    }
+  }
+
+  &__slogan {
+    color: var(--color-accent);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-shadow: var(--accent-text-shadow);
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  &__connect-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(24);
+
+    time {
+      color: var(--color-accent);
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      column-gap: fluid(20, 10);
+
+      svg {
+        width: rem(44);
+        height: rem(44);
+        flex-shrink: 0;
+      }
+    }
+
+    svg {
+      fill: var(--color-gray-light);
+      stroke: var(--color-accent-third);
+    }
+  }
+
+  &__document,
+  &__phone {
+    fill: var(--color-accent);
+    will-change: transform;
+
+    @include hover {
+      fill: var(--color-accent-secondary);
+
+      a {
+        background-position: 0% 100%;
+        text-shadow: #{rem(1)} #{rem(2)} #{rem(5)} rgba(255, 255, 255, 0.25);
+      }
+    }
+
+    @include speciall-active {
+      svg {
+        scale: 0.9;
+        transition-duration: var(--transition-duration);
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      column-gap: rem(20);
+      font-weight: 600;
+      background-image: linear-gradient(
+        var(--color-gray-light) 50%,
+        var(--color-accent-secondary) 50%
+      );
+      background-size: 100% 200%;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: var(--links-text-shadow);
+    }
+  }
+
+  &__phone {
+    @include fluid-text(24, 20);
+    white-space: nowrap;
+  }
+
+  &__copyright {
+    @include fluid-text(24, 14);
+
+    text-align: center;
+  }
+}
+@include desktop-media {
+  .footer {
+    .parallax-bg--secondary {
+      --parallax-shift: 20%;
+
+      background-size: 100% 100% !important;
+    }
+  }
+}
+@include tablet-media {
+  .footer {
+    &__connect-list {
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+}
+
+@include mobile-s-media {
+  .footer {
+    &__connect-list {
+      li {
+        svg {
+          width: rem(30);
+          height: rem(30);
+        }
+      }
+    }
+  }
+}
 /* ============================ */
 /* ==== END  Block footer  ==== */
 /* ============================ */

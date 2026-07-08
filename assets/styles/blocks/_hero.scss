@@ -52,6 +52,15 @@
   }
 }
 
+@include tablet-media {
+  .hero {
+    .parallax-bg--secondary {
+      --parallax-shift: 30%;
+
+      background-size: 100% 100% !important;
+    }
+  }
+}
 @include mobile-media {
   .hero {
     &__title {

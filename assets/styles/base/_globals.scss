@@ -14,8 +14,8 @@ body {
   flex-direction: column;
 
   font-family: var(--font-family);
-  color: var(--color-gray);
-  background-color: var(--color-dark);
+  color: var(--color-gray-light);
+  background-color: var(--color-purple-dark);
 
   &:has(#menu-switch:checked) {
     overflow: hidden;
@@ -100,6 +100,19 @@ button {
 .secondary-accent-color {
   color: var(--color-accent-secondary);
 }
+.third-accent-color {
+  color: var(--color-accent-third);
+}
+.accent-font {
+  @include fluid-text(46, 16);
+
+  font-family: var(--third-family);
+}
+
+.words-no-wrap {
+  white-space: nowrap;
+}
+
 /* ============================ */
 /* ==== END Globals styles ==== */
 /* ============================ */
