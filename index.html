@@ -228,11 +228,17 @@
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 			var preloader = document.querySelector('[data-preloader]');
-			if (!preloader) return;
+			if (!preloader) {
+				// Прелоудера нет на странице — сразу сообщаем остальным скриптам,
+				// что "загрузка завершена", чтобы welcome-блок не ждал вечно
+				document.dispatchEvent(new CustomEvent('preloader:hidden'));
+				return;
+			}
 
 			function hide() {
 				preloader.classList.add('is-hidden');
 				document.documentElement.classList.remove('is-loading');
+				document.dispatchEvent(new CustomEvent('preloader:hidden'));
 				setTimeout(function () {
 					preloader.remove();
 				}, 400);
@@ -423,6 +429,17 @@
 			<p class="form__status" aria-live="polite"></p>
 		</form> -->
 
+		<div class="welcome-block">
+			<div class="welcome-block__wrapper">
+				<img class="welcome-block__image" src="./assets/images/welcome-image.webp" width="360" height="458" alt=""
+					aria-hidden="true">
+
+				<div class="welcome-block__text">
+					<span>С</span><span>д</span><span>е</span><span>л</span><span>а</span><span>н</span><span>о</span><span>
+					</span><span>с</span><span>&nbsp;</span><span>л</span><span>ю</span><span>б</span><span>о</span><span>в</span><span>ь</span><span>ю</span>
+				</div>
+			</div>
+		</div>
 	</main>
 
 	<footer class="footer">

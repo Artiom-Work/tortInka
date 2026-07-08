@@ -15,6 +15,41 @@
   }
 }
 
+@keyframes hide-welcome {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes hide-welcome-image {
+  from {
+    scale: 1;
+    translate: -50% -50%;
+    top: 50%;
+  }
+  to {
+    top: 0%;
+    scale: 0;
+    translate: -50% -100%;
+  }
+}
+
+@keyframes letter-appear {
+  to {
+    opacity: 1;
+  }
+}
+// @keyframes hide-welcome-text {
+//   from {
+//     opacity: 1;
+//   }
+//   to {
+//     opacity: 0;
+//   }
+// }
 // @keyframes scale-off {
 //   0% {
 //     scale: 0;

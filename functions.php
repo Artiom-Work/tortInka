@@ -246,11 +246,17 @@ function tortinka_preloader_hide_script() {
 		<script>
 		document.addEventListener('DOMContentLoaded', function () {
 				var preloader = document.querySelector('[data-preloader]');
-				if (!preloader) return;
+				if (!preloader) {
+            // Прелоудера нет на странице — сразу сообщаем остальным скриптам,
+            // что "загрузка завершена", чтобы welcome-блок не ждал вечно
+            document.dispatchEvent(new CustomEvent('preloader:hidden'));
+            return;
+        }
 
 				function hide() {
 						preloader.classList.add('is-hidden');
 						document.documentElement.classList.remove('is-loading');
+						document.dispatchEvent(new CustomEvent('preloader:hidden'));
 						setTimeout(function () {
 								preloader.remove();
 						}, 400);

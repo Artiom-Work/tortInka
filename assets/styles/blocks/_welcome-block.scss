@@ -1,0 +1,73 @@
+@use "../healpers" as *;
+/* ==== Block welcome-block ==== */
+.welcome-block {
+  @include flex-center;
+
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  background-color: var(--color-black-opasity-90);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    .welcome-block__text span {
+      animation: letter-appear 0.8s ease forwards;
+    }
+
+    .welcome-block__text {
+      @for $i from 1 through 20 {
+        span:nth-child(#{$i}) {
+          animation-delay: calc(1s + #{$i * 0.12}s);
+        }
+      }
+    }
+  }
+
+  &.is-hidden {
+    animation: hide-welcome 1s ease-out forwards;
+
+    .welcome-block__wrapper {
+      animation: hide-welcome-image 1s ease-in forwards;
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+  }
+
+  &__image {
+    z-index: 20;
+    filter: drop-shadow(
+      rgba(255, 255, 255, 0.25) #{rem(0)} #{rem(1)} #{rem(14)}
+    );
+  }
+
+  &__text {
+    max-width: rem(351);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    text-align: center;
+    color: var(--color-dark);
+    font-size: fluid(64, 40);
+    line-height: 1;
+    font-family: var(--third-family);
+
+    span {
+      opacity: 0;
+    }
+  }
+}
+/* =================================== */
+/* ==== END  Block welcome-block  ==== */
+/* =================================== */

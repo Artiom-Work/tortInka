@@ -4,7 +4,9 @@
 // new Header()
 // new ExpandableContentCollection()
 import { showInlineLoader, hideInlineLoader } from './inline-preloader.js';
+import { initWelcomeBlock } from './welcome-block.js';
 
+initWelcomeBlock();
 document.querySelectorAll('.image-slot').forEach((slot) => {
 	const img = slot.querySelector('img');
 	if (!img) return;
@@ -17,7 +19,6 @@ document.querySelectorAll('.image-slot').forEach((slot) => {
 	img.addEventListener('load', finish);
 	img.addEventListener('error', finish);
 });
-
 
 document.querySelectorAll('form[data-ajax-form]').forEach((form) => {
 	form.addEventListener('submit', async (e) => {
@@ -58,3 +59,4 @@ function fakeSubmitRequest(form) {
 		setTimeout(() => resolve({ ok: true }), 8000);
 	});
 }
+
