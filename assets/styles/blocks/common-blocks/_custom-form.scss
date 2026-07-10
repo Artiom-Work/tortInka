@@ -1,0 +1,78 @@
+@use "../../healpers" as *;
+/* ===  Styles for custom form === */
+.custom-form {
+  label {
+    @include fluid-text(20, 16);
+
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-family);
+    color: var(--color-dark);
+    font-weight: 700;
+    margin-bottom: rem(10);
+  }
+
+  input,
+  textarea {
+    @include fluid-text(18, 14);
+
+    line-height: 1.5;
+    min-height: rem(60);
+    border-radius: var(--border-radius-small);
+    background-color: var(--color-light);
+    border: none;
+    outline: none;
+    box-shadow: 0 0 0 rem(1) var(--color-gray);
+    width: 100%;
+    margin-bottom: rem(20);
+
+    &::placeholder {
+      color: var(--color-dark-opasity-50);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 rem(2) var(--color-accent-secondary);
+    }
+  }
+
+  input {
+    text-align: center;
+    padding: rem(11) rem(12);
+  }
+
+  textarea {
+    min-height: rem(100);
+    padding: rem(5);
+    font-size: rem(16);
+    resize: none;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-self: center;
+  }
+}
+
+@include tablet-media {
+  .custom-form {
+    label,
+    input,
+    textarea {
+      margin-bottom: rem(5);
+    }
+
+    input {
+      min-height: rem(44);
+      padding: rem(10);
+    }
+    textarea {
+      font-size: rem(14);
+      padding: rem(5);
+      line-height: 1.2;
+    }
+    &__button {
+      padding-block: rem(10);
+    }
+  }
+}

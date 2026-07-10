@@ -1,0 +1,155 @@
+@use "../healpers" as *;
+/* ==== Section favorites) ==== */
+.favorites {
+  padding-block: fluid(50, 20) rem(50);
+  overflow: hidden;
+
+  &__title {
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: fluid(70, 30);
+    letter-spacing: 0.03em;
+    line-height: 1.4;
+    text-align: center;
+    text-shadow: var(--accent-text-shadow);
+  }
+
+  &__slider {
+    ul {
+      a {
+        @include hover {
+          filter: brightness(80%);
+        }
+      }
+    }
+
+    li {
+      max-width: rem(300);
+    }
+  }
+
+  &__card {
+    padding: rem(10) rem(10) rem(15);
+    background-color: var(--color-brown-light);
+    border-radius: var(--border-radius-small);
+    text-align: center;
+    box-shadow: var(--box-shadow-light);
+
+    &-image {
+      width: 100%;
+      height: rem(280);
+
+      &-wrapper {
+        border-radius: var(--border-radius-small);
+        overflow: hidden;
+        margin-bottom: rem(10);
+        box-shadow: var(--box-shadow-dark);
+      }
+    }
+
+    &-heading {
+      color: var(--color-accent);
+      font-weight: 700;
+      text-shadow: var(--accent-text-shadow);
+      margin-bottom: rem(15);
+    }
+
+    &-summary {
+      @include fluid-text(18, 16);
+
+      line-height: 1;
+      font-weight: 400;
+      margin-bottom: rem(10);
+      color: var(--color-dark);
+    }
+
+    &-price {
+      @include fluid-text(22, 20);
+
+      display: inline-block;
+      color: var(--color-dark);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      line-height: 1;
+      margin-bottom: rem(10);
+    }
+
+    &-button {
+      padding: rem(10) rem(20);
+      border-radius: var(--border-radius-medium);
+    }
+  }
+}
+
+@include laptop-media {
+  .favorites {
+    &__slider {
+      li {
+        max-width: rem(210);
+      }
+    }
+
+    &__card-image {
+      height: rem(190);
+    }
+  }
+}
+
+@include tablet-media-above {
+  .favorites {
+    &__slider {
+      ul {
+        min-height: rem(450);
+        display: flex;
+        justify-content: space-between;
+        gap: rem(20);
+      }
+
+      li:nth-child(even) {
+        align-self: self-end;
+      }
+    }
+  }
+}
+
+@include laptop-media-above {
+  .favorites {
+    &__slider {
+      ul {
+        min-height: rem(530);
+      }
+    }
+  }
+}
+
+@include tablet-media {
+  .favorites {
+    &__slider {
+      li {
+        max-width: rem(320);
+        width: 100%;
+      }
+    }
+
+    &__card-image {
+      height: rem(280);
+    }
+  }
+}
+
+@include mobile-medium-media {
+  .favorites {
+    &__slider {
+      li {
+        max-width: rem(220);
+      }
+    }
+
+    &__card-image {
+      height: rem(190);
+    }
+  }
+}
+/* ================================ */
+/* ==== END  section favorites ==== */
+/* ================================ */

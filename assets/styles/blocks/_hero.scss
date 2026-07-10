@@ -3,6 +3,7 @@
 .hero {
   position: relative;
   overflow: clip;
+  border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
 
   .container {
     position: relative;
@@ -25,8 +26,8 @@
     font-weight: 600;
     margin-bottom: fluid(347, 280);
     letter-spacing: 0.03em;
-    text-shadow: var(--accent-text-shadow);
     line-height: 1.4;
+    text-shadow: var(--accent-text-shadow);
   }
 
   &__subtitle {

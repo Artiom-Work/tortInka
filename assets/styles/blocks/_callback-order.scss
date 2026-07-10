@@ -1,0 +1,58 @@
+@use "../healpers" as *;
+
+/* ==== Block callback-oreder(dialog-content) ==== */
+.callback-order {
+  @include flex-center;
+
+  max-width: fluid(550, 300);
+  width: 100%;
+  min-height: fluid(700, 450);
+  gap: fluid(24, 10);
+  color: var(--color-dark);
+  filter: drop-shadow(rgba(255, 255, 255, 0.5) #{rem(0)} #{rem(5)} #{rem(14)});
+
+  &__image {
+    width: 100%;
+    min-height: fluid(700, 450);
+    object-fit: cover;
+    border-radius: inherit;
+
+    &-wrapper {
+      position: absolute;
+      max-width: inherit;
+      width: inherit;
+      border-radius: rem(40);
+      filter: brightness(70%) sepia(0.4);
+    }
+  }
+
+  &__action {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    line-height: 1.3;
+    margin-bottom: fluid(40, 20);
+    color: var(--color-accent);
+    text-shadow: var(--accent-text-shadow-light);
+  }
+}
+
+@include tablet-media {
+  .callback-oreder {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+}
+/* ==================================== */
+/* ==== END  Block callback-oreder ==== */
+/* ==================================== */

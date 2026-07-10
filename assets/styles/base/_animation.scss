@@ -42,33 +42,17 @@
     opacity: 1;
   }
 }
-// @keyframes hide-welcome-text {
-//   from {
-//     opacity: 1;
-//   }
-//   to {
-//     opacity: 0;
-//   }
-// }
-// @keyframes scale-off {
-//   0% {
-//     scale: 0;
-//   }
-//   100% {
-//     scale: 1;
-//   }
-// }
 
-// @keyframes show-modal {
-//   0% {
-//     scale: 0.75;
-//     opacity: 0;
-//   }
-//   100% {
-//     opacity: 1;
-//     scale: 1;
-//   }
-// }
+@keyframes show-modal {
+  0% {
+    scale: 0.75;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
 
 // @keyframes hide-unit {
 //   0%,

@@ -16,6 +16,7 @@
   text-shadow: var(--links-text-shadow);
   border-radius: var(--border-radius);
   will-change: transform;
+  box-shadow: var(--box-shadow-light);
 
   @include hover {
     filter: brightness(80%);

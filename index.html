@@ -12,7 +12,7 @@
 	<!-- <meta name="description"
 		content=""> -->
 	<title>tortInka</title>
-	<!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> -->
+	<link rel="stylesheet" href="./assets/libs/swiper/swiper-bundle.min.css">
 
 	<style id="preloader-critical-css">
 		/* ===  Preloader styles === */
@@ -248,7 +248,7 @@
 			setTimeout(hide, 8000);
 		});
 	</script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/imask/7.6.1/imask.min.js" defer></script>
 	<link rel="stylesheet" href="./assets//styles/style.css">
 </head>
 
@@ -396,11 +396,161 @@
 						<p>Сделано с&nbsp;любовью</p>
 					</div>
 
-					<button class="hero__button button" type="button" title="Заказать">Попробовать</button>
+					<button class="hero__button button" type="button" title="Заказать" data-open-modal="callBackModal">
+						Попробовать
+					</button>
 				</div>
 
 				<img class="hero__image" src="./assets/images/hero/hero-main-image.webp" width="345" height="300"
 					alt="Детский торт">
+			</div>
+		</section>
+
+		<section class="favorites" aria-labelledby="favorites-title">
+			<h2 class="favorites__title h3" id="favorites-title">
+				Что любят больше
+			</h2>
+
+			<div class="container">
+				<div class="favorites__slider">
+					<ul class="swiper-wrapper">
+						<li class="swiper-slide">
+							<article class="favorites__card">
+								<figure class="favorites__card-image-wrapper preloader-block">
+									<a href="./assets/images/products/favorite-cake-1.webp" target="_blank">
+										<img class="favorites__card-image" src="./assets/images/products/favorite-cake-1.webp" width="280"
+											height="280" alt="Торт для мальчиков" loading="lazy">
+									</a>
+								</figure>
+
+								<h3 class="favorites__card-heading h4">
+									<a href="#!" target="_self">
+										Для мальчиков
+									</a>
+								</h3>
+
+								<div class="favorites__card-summary">
+									<p>
+										Смелым и&nbsp;решительным!
+									</p>
+								</div>
+
+								<span class="favorites__card-price">
+									От <span>70</span> Br
+								</span>
+
+								<div>
+									<button class="favorites__card-button button" type="button" title="Заказать"
+										data-open-modal="callBackModal">
+										Заказать
+									</button>
+								</div>
+							</article>
+						</li>
+
+						<li class="swiper-slide">
+							<article class="favorites__card">
+								<figure class="favorites__card-image-wrapper preloader-block">
+									<a href="./assets/images/products/favorite-cake-2.webp" target="_blank">
+										<img class="favorites__card-image" src="./assets/images/products/favorite-cake-2.webp" width="280"
+											height="280" alt="Торт для девочек" loading="lazy">
+									</a>
+								</figure>
+
+								<h3 class="favorites__card-heading h4">
+									<a href="#!" target="_self">
+										Для девочек
+									</a>
+								</h3>
+
+								<div class="favorites__card-summary">
+									<p>
+										С любовью к&nbsp;прекрасному...
+									</p>
+								</div>
+
+								<span class="favorites__card-price">
+									От <span>65</span> Br
+								</span>
+
+								<div>
+									<button class="favorites__card-button button" type="button" title="Заказать"
+										data-open-modal="callBackModal">
+										Заказать
+									</button>
+								</div>
+							</article>
+						</li>
+
+						<li class="swiper-slide">
+							<article class="favorites__card">
+								<figure class="favorites__card-image-wrapper preloader-block">
+									<a href="./assets/images/products/favorite-cake-3.webp" target="_blank">
+										<img class="favorites__card-image" src="./assets/images/products/favorite-cake-3.webp" width="280"
+											height="280" alt="Торт любимому" loading="lazy">
+									</a>
+								</figure>
+
+								<h3 class="favorites__card-heading h4">
+									<a href="#!" target="_self">
+										Любимому
+									</a>
+								</h3>
+
+								<div class="favorites__card-summary">
+									<p>
+										Ваша вселенная для&nbsp;него
+									</p>
+								</div>
+
+								<span class="favorites__card-price">
+									От <span>90</span> Br
+								</span>
+
+								<div>
+									<button class="favorites__card-button button" type="button" title="Заказать"
+										data-open-modal="callBackModal">
+										Заказать
+									</button>
+								</div>
+							</article>
+						</li>
+
+						<li class="swiper-slide">
+							<article class="favorites__card">
+								<figure class="favorites__card-image-wrapper preloader-block">
+									<a href="./assets/images/products/favorite-cake-4.webp" target="_blank">
+										<img class="favorites__card-image" src="./assets/images/products/favorite-cake-4.webp" width="280"
+											height="280" alt="Торт победный" loading="lazy">
+									</a>
+								</figure>
+
+								<h3 class="favorites__card-heading h4">
+									<a href="#!" target="_self">
+										Победный
+									</a>
+								</h3>
+
+								<div class="favorites__card-summary">
+									<p>
+										Когда хочется большего...
+									</p>
+								</div>
+
+								<span class="favorites__card-price">
+									От <span>55</span> Br
+								</span>
+
+								<div>
+									<button class="favorites__card-button button" type="button" title="Заказать"
+										data-open-modal="callBackModal">
+										Заказать
+									</button>
+								</div>
+							</article>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</section>
 
@@ -421,13 +571,6 @@
 				<img src="./assets/images/website/cake-5.png" width="600" height="743" alt="Торт">
 			</div>
 		</div>
-		<!-- <form action="" data-ajax-form>
-			<input type="text">
-			<button class="button preloader-block preloader-block--xs" type="submit">
-				<span>Отправить</span>
-			</button>
-			<p class="form__status" aria-live="polite"></p>
-		</form> -->
 
 		<div class="welcome-block">
 			<div class="welcome-block__wrapper">
@@ -517,9 +660,145 @@
 
 		</div>
 	</footer>
-	<!-- <script src="assets/libs/swiper/swiper-bundle.min.js"></script> -->
-	<!-- <script type="module" src="assets/js/promo-slider.js"></script> -->
-	<script type="module" src="assets/js/main.js"></script>
+
+	<!-- <button class="error__button button button--accent-bg" type="button" onclick="errorSubmitModal.showModal()">
+		test
+	</button> -->
+
+	<dialog class="base-modal" id="succSubmitModal">
+		<form class="base-modal__close-overlay-wrapper" method="dialog">
+			<button class="base-modal__close-overlay" type="submit">
+				<span class="visually-hidden">Область закрытия модального окна уведомления об успешной отправке заказа на сайте
+					tortInka</span>
+			</button>
+		</form>
+
+		<div class="base-modal__inner">
+			<section class="base-modal__content confirm-submit" aria-labelledby="succ-submit-title">
+				<h3 class="visually-hidden">Успешная отправка заказа на сайте tortInka</h3>
+
+				<div>
+					<h4 class="confirm-submit__title h1" id="succ-submit-title">
+						Ваша заявка<br>
+						успешно отправлена!
+					</h4>
+
+					<div class="confirm-submit__text">
+						<p>
+							Я свяжусь с&nbsp;вами в&nbsp;ближайшее время
+						</p>
+					</div>
+
+					<a class="button" href="./index.html">
+						Домой
+					</a>
+				</div>
+
+				<img class="confirm-submit__image preloader-block" src="./assets/images/modals/thank-you.webp" width="450"
+					height="400" alt="Спасибо за ваш заказ" loading="lazy">
+
+			</section>
+		</div>
+	</dialog>
+
+	<dialog class="base-modal" id="errorSubmitModal">
+		<form class="base-modal__close-overlay-wrapper" method="dialog">
+			<button class="base-modal__close-overlay" type="submit">
+				<span class="visually-hidden">Область закрытия модального окна уведомления об успешной отправке заказа на сайте
+					tortInka</span>
+			</button>
+		</form>
+
+		<div class="base-modal__inner">
+			<section class="base-modal__content confirm-submit" aria-labelledby="confirm-submit-title">
+				<h3 class="visually-hidden">Сообщение пользователю об отправки данных на сайте tortInka</h3>
+
+				<div>
+					<h4 class="confirm-submit__title confirm-submit__title--fail h1" id="confirm-submit-title">
+						Что-то пошло не&nbsp;так&nbsp;.<br>
+						Извините&nbsp;...
+					</h4>
+
+					<div class="confirm-submit__text">
+						<p>
+							Попробуйте ещё раз...
+						</p>
+					</div>
+
+					<a class="button" href="./index.html">
+						Домой
+					</a>
+				</div>
+
+				<img class="succ-submit__image preloader-block" src="./assets/images/modals/sorry-image.webp" width="450"
+					height="400" alt="Извините, что-то пошло не так" loading="lazy">
+			</section>
+		</div>
+	</dialog>
+
+	<dialog class="base-modal" id="callBackModal">
+		<form class="base-modal__close-overlay-wrapper" method="dialog">
+			<button class="base-modal__close-overlay" type="submit">
+				<span class="visually-hidden">Область закрытия модального окна для заказа на сайте tortInka</span>
+			</button>
+		</form>
+
+		<div class="base-modal__inner">
+			<section class="base-modal__content callback-order">
+				<form class="base-modal__close-button-wrapper" method="dialog">
+					<button class="base-modal__close-button" type="submit">
+						<span class="visually-hidden">
+							Кнопка для закрывания заявки на обратный звонок
+						</span>
+
+						<svg class="base-modal__close-button-icon" width="44" height="44">
+							<use xlink:href="./assets/images/icons/sprite-icons.svg#close-circle-icon">
+							</use>
+						</svg>
+					</button>
+				</form>
+				<h3 class="visually-hidden">Заказ кондитерского изделия на сайте tortInka</h3>
+
+				<div class="callback-order__image-wrapper">
+					<img class="callback-order__image" src="./assets/images/modals/callback-form-bg.webp" width="550" height="750"
+						alt="" aria-hidden="true">
+				</div>
+
+				<div class="callback-order__action">
+					<form class="callback-order__form custom-form" action="" data-ajax-form data-success-modal="succSubmitModal"
+						data-error-modal="errorSubmitModal">
+						<span>
+							<label for="customerName">Как к&nbsp;вам лучше обращаться?</label>
+
+							<input class="field__control" id="customerName" name="name" placeholder="Мария Валентиновна">
+						</span>
+
+						<span>
+							<label for="phoneNumber">Ваш телефон</label>
+
+							<input class="field__control" id="phoneNumber" name="note" placeholder="(99) 999-99-99"
+								data-js-input-mask="(00) 000-00-00" required>
+						</span>
+
+						<span>
+							<label for="customerNote">Пожелания и&nbsp;предпочтения</label>
+
+							<textarea class="field__control" id="customerNote" name="number"
+								placeholder="Можно указать название торта, дату приготовления, пожелания к упаковке или особенности декора и прочее..."></textarea>
+						</span>
+						<button class="custom-form__button button preloader-block preloader-block--xs" type="submit"
+							title="Отправить заявку на обратный звонок">
+							Отправить заявку
+						</button>
+					</form>
+				</div>
+
+			</section>
+		</div>
+	</dialog>
+	<script src="./assets/libs/swiper/swiper-bundle.min.js"></script>
+	<script type="module" src="./assets/js/favotites-slider.js"></script>
+	<script type="module" src="assets/js/main.js" defer></script>
 </body>
 
 </html>
