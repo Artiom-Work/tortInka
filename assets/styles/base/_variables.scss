@@ -7,6 +7,7 @@
   --color-dark-opasity-75: rgba(34, 31, 31, 0.75);
   --color-dark-opasity-90: rgba(34, 31, 31, 0.9);
   --color-black-opasity-50: rgba(0, 0, 0, 0.5);
+  --color-black-opasity-75: rgba(0, 0, 0, 0.75);
   --color-black-opasity-90: rgba(0, 0, 0, 0.9);
   --color-white-opasity-50: rgba(255, 255, 255, 0.5);
   --color-gray: #7a7373;
@@ -16,6 +17,8 @@
   --color-red: #74062f;
   --color-purple: #870395;
   --color-purple-dark: #3f1740;
+  --color-brown-dark: #2f1d0c;
+  --color-brown-dark-opasity-75: rgba(67, 42, 19, 0.75);
   --color-brown-light: #704e2d;
 
   --color-purple-opasity-10: rgba(135, 3, 149, 0.1);
@@ -34,11 +37,15 @@
 
   --links-text-shadow: 0 #{rem(3)} #{rem(3)} var(--color-dark-opasity-50);
   --accent-text-shadow: 0 #{rem(2)} #{rem(3)} var(--color-black-opasity-90);
+  --accent-text-shadow-medium: 0 #{rem(2)} #{rem(3)}
+    var(--color-black-opasity-50);
   --accent-text-shadow-light: 0 #{rem(3)} #{rem(3)}
     var(--color-white-opasity-50);
 
   --box-shadow-light: 0 0 #{rem(12)} #{rem(-5)} var(--color-gray-light);
+  --box-shadow-light-blur: 0 0 #{rem(22)} #{rem(-5)} var(--color-gray-light);
   --box-shadow-dark: 0 0 #{rem(12)} #{rem(-5)} var(--color-dark);
+  --box-shadow-dark-blur: 0 0 #{rem(22)} #{rem(-5)} var(--color-dark);
 
   --font-family: "Montserrat", sans-serif;
   --second-family: "MiamaNueva", sans-serif;
