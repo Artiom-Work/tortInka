@@ -17,9 +17,10 @@
   --color-red: #74062f;
   --color-purple: #870395;
   --color-purple-dark: #3f1740;
+  --color-brown-light: #704e2d;
+  --color-brown-medium: #4b3016;
   --color-brown-dark: #2f1d0c;
   --color-brown-dark-opasity-75: rgba(67, 42, 19, 0.75);
-  --color-brown-light: #704e2d;
 
   --color-purple-opasity-10: rgba(135, 3, 149, 0.1);
   --color-purple-opasity-50: rgba(135, 3, 149, 0.5);
@@ -39,7 +40,7 @@
   --accent-text-shadow: 0 #{rem(2)} #{rem(3)} var(--color-black-opasity-90);
   --accent-text-shadow-medium: 0 #{rem(2)} #{rem(3)}
     var(--color-black-opasity-50);
-  --accent-text-shadow-light: 0 #{rem(3)} #{rem(3)}
+  --accent-text-shadow-light: 0 #{rem(1)} #{rem(3)}
     var(--color-white-opasity-50);
 
   --box-shadow-light: 0 0 #{rem(12)} #{rem(-5)} var(--color-gray-light);

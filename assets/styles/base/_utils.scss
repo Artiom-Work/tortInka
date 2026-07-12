@@ -78,7 +78,49 @@
 .letters-nowrap {
   white-space: nowrap;
 }
+.coffee-bg {
+  background:
+    radial-gradient(ellipse at 82% 42%, #9b7954 0%, rgba(226, 182, 135, 0) 55%),
+    radial-gradient(ellipse at 3% 3%, #2b1603 0%, rgba(43, 22, 3, 0) 45%),
+    radial-gradient(ellipse at 8% 60%, #663806 0%, rgba(102, 56, 6, 0) 50%),
+    linear-gradient(
+      135deg,
+      #3a2004 0%,
+      #8d5816 45%,
+      #b58243 65%,
+      #a4825e 85%,
+      #9b6529 100%
+    );
+  background-color: #663806;
+}
 
+.brand-bg {
+  background:
+    radial-gradient(
+      ellipse at 82% 42%,
+      var(--color-rose) 0%,
+      color-mix(in srgb, var(--color-rose), transparent 100%) 55%
+    ),
+    radial-gradient(
+      ellipse at 3% 3%,
+      var(--color-purple-dark) 0%,
+      color-mix(in srgb, var(--color-purple-dark), transparent 100%) 45%
+    ),
+    radial-gradient(
+      ellipse at 8% 60%,
+      var(--color-red) 0%,
+      color-mix(in srgb, var(--color-red), transparent 100%) 50%
+    ),
+    linear-gradient(
+      135deg,
+      var(--color-dark) 0%,
+      var(--color-purple-dark) 30%,
+      var(--color-purple) 55%,
+      var(--color-rose) 80%,
+      var(--color-red) 100%
+    );
+  background-color: var(--color-purple-dark);
+}
 // .scroll-y {
 //   overflow-y: auto;
 

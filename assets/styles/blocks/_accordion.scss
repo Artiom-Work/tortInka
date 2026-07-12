@@ -1,0 +1,135 @@
+@use "../healpers" as *;
+/* ==== Component accordion ==== */
+.accordion {
+  position: relative;
+  overflow: clip;
+  border-radius: var(--border-radius-small);
+  padding: rem(20) fluid(20, 10);
+  transition-duration: var(--transition-duration);
+  box-shadow: var(--box-shadow-light);
+
+  &:has(details[open]) {
+    padding: rem(20) fluid(20, 10) fluid(150, 70);
+
+    .accordion__image {
+      opacity: 1;
+    }
+  }
+  .parallax-bg--secondary {
+    --parallax-shift: 20%;
+  }
+  &__image {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: fluid(165, 56);
+    opacity: 0;
+    transition-duration: var(--transition-duration);
+  }
+
+  &__details {
+    &[open] {
+      .accordion__title {
+        &::after {
+          rotate: -135deg;
+        }
+
+        &::before {
+          rotate: 135deg;
+        }
+      }
+
+      & + .accordion__content {
+        grid-template-rows: 1fr;
+      }
+    }
+  }
+
+  &__summary {
+    list-style: none;
+    color: var(--color-light);
+
+    @include hover {
+      color: var(--color-accent);
+    }
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  &__title {
+    @include fluid-text(30, 22);
+
+    font-family: var(--font-family);
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+    padding-right: rem(60);
+    color: var(--color-brown-medium);
+    text-shadow: var(--accent-text-shadow-light);
+    transition-duration: var(--transition-duration);
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      @include abs-y;
+
+      transition-duration: var(--transition-duration);
+    }
+
+    &::after {
+      content: "+";
+      font-family: var(--font-family);
+      right: rem(13);
+      text-shadow: none;
+      font-size: rem(30);
+      line-height: 1;
+    }
+
+    &::before {
+      @include square(rem(44));
+      content: "";
+      right: 0;
+      background: url(/assets/images/icons/round-hearts-icon.webp);
+      border-radius: 50%;
+    }
+
+    @include hover {
+      color: var(--color-accent);
+    }
+  }
+
+  &__content {
+    position: relative;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition-duration: 0.3s;
+
+    &-inner {
+      overflow: hidden;
+    }
+
+    &-body {
+      --offsetTop: #{fluid(24, 16)};
+
+      position: relative;
+      z-index: 2;
+      margin-top: var(--offsetTop);
+      padding-top: var(--offsetTop);
+      border-top: var(--border);
+      text-shadow: var(--accent-text-shadow);
+
+      strong,
+      ul {
+        color: var(--color-accent-secondary);
+        text-shadow: var(--accent-text-shadow-light);
+      }
+      ul {
+        padding-left: rem(25);
+        list-style: disc;
+      }
+    }
+  }
+}

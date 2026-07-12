@@ -59,8 +59,7 @@
     }
   }
 
-  &__document,
-  &__phone {
+  &__link {
     fill: var(--color-accent);
     will-change: transform;
 
@@ -95,11 +94,11 @@
       background-clip: text;
       text-shadow: var(--links-text-shadow);
     }
-  }
 
-  &__phone {
-    @include fluid-text(24, 20);
-    white-space: nowrap;
+    &--phone {
+      @include fluid-text(24, 20);
+      white-space: nowrap;
+    }
   }
 
   &__copyright {

@@ -1,0 +1,29 @@
+@use "../healpers" as *;
+@use "accordion";
+
+/* ==== Section faq ==== */
+.faq {
+  padding: fluid(50, 30) rem(10);
+
+  &__title {
+    color: var(--color-accent);
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    letter-spacing: 0.03em;
+    text-shadow: var(--accent-text-shadow-medium);
+    margin-bottom: rem(30);
+  }
+
+  &__accordion {
+    margin-inline: auto;
+    max-width: rem(1000);
+
+    .accordion:not(:last-child) {
+      margin-bottom: rem(10);
+    }
+  }
+}
+/* ==================*/
+/* ==== END faq ==== */
+/* ================= */
