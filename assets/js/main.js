@@ -5,9 +5,11 @@
 // new ExpandableContentCollection()
 import { showInlineLoader, hideInlineLoader } from './inline-preloader.js';
 import { initWelcomeBlock } from './welcome-block.js';
+import { initFadeIn } from './fade-in.js';
 import InputMaskCollection from './InputMask.js';
 
 new InputMaskCollection();
+initFadeIn();
 initWelcomeBlock();
 
 document.querySelectorAll('.image-slot').forEach((slot) => {
@@ -22,7 +24,7 @@ document.querySelectorAll('.image-slot').forEach((slot) => {
 	img.addEventListener('load', finish);
 	img.addEventListener('error', finish);
 });
-/* Код для формы у вёрстке */
+/* Код для формы в вёрстке */
 document.querySelectorAll('form[data-ajax-form]').forEach((form) => {
 	form.addEventListener('submit', async (e) => {
 		e.preventDefault();

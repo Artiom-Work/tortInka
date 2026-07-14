@@ -78,6 +78,7 @@
 .letters-nowrap {
   white-space: nowrap;
 }
+/* Custom tortInka's backgrounds */
 .coffee-bg {
   background:
     radial-gradient(ellipse at 82% 42%, #9b7954 0%, rgba(226, 182, 135, 0) 55%),
@@ -121,6 +122,8 @@
     );
   background-color: var(--color-purple-dark);
 }
+
+/* Cusrom scroll-bar */
 // .scroll-y {
 //   overflow-y: auto;
 
@@ -153,6 +156,28 @@
 //     // scrollbar-color: var(--) transparent;
 //   }
 // }
+
+/* Custom animate fadeIn styles */
+.fade-in {
+  opacity: 0;
+  translate: 0 #{rem(24)};
+  transition:
+    opacity var(--transition-duration-extra-long) ease-out,
+    translate var(--transition-duration-long) ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+}
 /* ============================== */
 /* ==== END  Utils selectors ==== */
 /* ============================== */

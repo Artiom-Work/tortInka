@@ -18,6 +18,30 @@
   will-change: transform;
   box-shadow: var(--box-shadow-light);
 
+  &--accent {
+    background:
+      radial-gradient(
+        ellipse at 82% 42%,
+        #9b7954 0%,
+        rgba(226, 182, 135, 0) 55%
+      ),
+      radial-gradient(ellipse at 3% 3%, #2b1603 0%, rgba(43, 22, 3, 0) 45%),
+      radial-gradient(ellipse at 8% 60%, #663806 0%, rgba(102, 56, 6, 0) 50%),
+      linear-gradient(
+        135deg,
+        #3a2004 0%,
+        #8d5816 45%,
+        #b58243 65%,
+        #a4825e 85%,
+        #9b6529 100%
+      );
+  }
+
+  &:disabled {
+    pointer-events: none;
+    background: var(--color-gray);
+  }
+
   @include hover {
     filter: brightness(80%);
   }

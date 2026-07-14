@@ -1,0 +1,105 @@
+@use "../healpers" as *;
+/* ==== Section current-topic ==== */
+.current-topic {
+  @include flex-center;
+
+  padding-block: fluid(120, 60);
+  padding-inline: fluid(120, 10);
+  gap: rem(50);
+
+  &__image {
+    width: inherit;
+    height: inherit;
+
+    &-wrapper {
+      @include square(rem(450));
+
+      flex-shrink: 0;
+      box-shadow: var(--box-shadow-light-blur);
+      border-radius: 50%;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    color: var(--color-accent);
+    text-shadow: var(--accent-text-shadow-medium);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: rem(30);
+  }
+
+  &__text {
+    margin-bottom: rem(20);
+    text-shadow: var(--accent-text-shadow-medium);
+
+    &-author {
+      @include fluid-text(46, 36);
+
+      font-family: var(--third-family);
+      color: var(--color-accent-third);
+      text-shadow: var(--accent-text-shadow-medium);
+      display: flex;
+      justify-self: end;
+      line-height: 1;
+    }
+  }
+
+  &__link {
+    text-decoration: underline;
+
+    @include hover {
+      filter: brightness(160%);
+    }
+  }
+}
+
+@include laptop-media {
+  .current-topic {
+    flex-direction: column;
+    gap: 0;
+
+    &__image-wrapper {
+      margin-bottom: rem(40);
+    }
+
+    &__body {
+      display: contents;
+    }
+
+    &__title {
+      order: -1;
+    }
+  }
+}
+
+@include mobile-media {
+  .current-topic {
+    &__image-wrapper {
+      @include square(rem(450));
+    }
+  }
+}
+
+@include mobile-medium-media {
+  .current-topic {
+    &__image-wrapper {
+      @include square(rem(380));
+    }
+  }
+}
+
+@include mobile-s-media {
+  .current-topic {
+    &__image-wrapper {
+      @include square(rem(300));
+    }
+  }
+}
+/* ==================================== */
+/* ==== END  section current-topic ==== */
+/* ==================================== */

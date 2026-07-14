@@ -27,8 +27,14 @@
   }
 
   &__image {
-    width: rem(450);
-    height: rem(400);
+    width: inherit;
+    height: inherit;
+    flex-shrink: 0;
+
+    &-wrapper {
+      width: rem(450);
+      height: rem(400);
+    }
   }
 }
 
@@ -36,15 +42,12 @@
   .confirm-submit {
     flex-direction: column-reverse;
     text-align: center;
-  }
-}
-@include mobile-media {
-  .confirm-submit {
+
     &__title {
       line-height: 1.2;
     }
 
-    &__image {
+    &__image-wrapper {
       width: rem(337);
       height: rem(300);
     }

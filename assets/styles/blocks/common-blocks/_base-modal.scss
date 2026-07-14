@@ -77,4 +77,12 @@
     z-index: 2;
     padding: fluid(20, 10);
   }
+
+  .callback-order {
+    min-height: fluid(700, 450);
+
+    filter: drop-shadow(
+      rgba(255, 255, 255, 0.5) #{rem(0)} #{rem(5)} #{rem(14)}
+    );
+  }
 }

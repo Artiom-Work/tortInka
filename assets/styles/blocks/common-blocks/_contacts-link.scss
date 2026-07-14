@@ -1,0 +1,58 @@
+@use "../../healpers" as *;
+/* ==== Styles for contact links ==== */
+.contacts-link {
+  display: flex;
+  align-items: center;
+  column-gap: fluid(20, 10);
+
+  &--phone {
+    @include fluid-text(24, 20);
+
+    white-space: nowrap;
+  }
+
+  @include hover {
+    a {
+      background-position: 0% 100%;
+      text-shadow: var(--accent-text-shadow);
+    }
+  }
+
+  @include speciall-active {
+    svg {
+      scale: 0.9;
+      transition-duration: var(--transition-duration);
+    }
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    column-gap: rem(15);
+    font-weight: 600;
+    background-image: linear-gradient(
+      var(--color-gray-light) 50%,
+      var(--color-accent-secondary) 50%
+    );
+    background-size: 100% 200%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: var(--links-text-shadow);
+  }
+
+  svg {
+    width: rem(44);
+    height: rem(44);
+    flex-shrink: 0;
+    fill: var(--color-gray-light);
+    stroke: var(--color-accent-third);
+    will-change: transform;
+  }
+
+  &--document {
+    svg {
+      fill: var(--color-accent);
+    }
+  }
+}

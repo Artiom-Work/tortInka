@@ -1,13 +1,40 @@
 @use "../../healpers" as *;
 /* ==== Logo styles ==== */
 .logo {
+  position: relative;
+  display: inline-block;
+
   &__image {
     width: rem(95);
     height: rem(75);
     filter: drop-shadow(
-      rgba(255, 255, 255, 0.25) #{rem(0)} #{rem(1)} #{rem(4)}
+      rgba(255, 255, 255, 0.25) #{rem(0)} #{rem(1)} #{rem(3)}
     );
     transition-duration: var(--transition-duration);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    left: 27%;
+    top: 23%;
+    pointer-events: none;
+    border-radius: 33%;
+    width: 70%;
+    height: 47%;
+    rotate: -47deg;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      #fff 10%,
+      transparent 20%
+    );
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    mix-blend-mode: overlay;
+    background-position: 5840% 0%;
+    animation: logo-shine 8s ease-in-out infinite;
   }
 
   @include hover {

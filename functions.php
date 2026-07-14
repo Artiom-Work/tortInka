@@ -137,11 +137,11 @@ function tortinka_preloader_critical_css() {
 				inset: 0;
 				pointer-events: none;
 				mix-blend-mode: overlay;
-				mask-image: url("../../images/preloader/logo-tortInka-dark-pink.svg");
+				mask-image: url("/assets/images/preloader/logo-tortInka-dark-pink.svg");
 				mask-repeat: no-repeat;
 				mask-position: center;
 				mask-size: contain;
-				-webkit-mask-image: url("../../images/preloader/logo-tortInka-dark-pink.svg");
+				-webkit-mask-image: url("/assets/images/preloader/logo-tortInka-dark-pink.svg");
 				-webkit-mask-repeat: no-repeat;
 				-webkit-mask-position: center;
 				-webkit-mask-size: contain;

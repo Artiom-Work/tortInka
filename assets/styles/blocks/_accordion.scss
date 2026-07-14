@@ -11,7 +11,7 @@
   &:has(details[open]) {
     padding: rem(20) fluid(20, 10) fluid(150, 70);
 
-    .accordion__image {
+    .accordion__image-wrapper {
       opacity: 1;
     }
   }
@@ -19,13 +19,17 @@
     --parallax-shift: 20%;
   }
   &__image {
-    position: absolute;
-    left: 0;
-    bottom: 0;
     width: 100%;
     min-height: fluid(165, 56);
-    opacity: 0;
     transition-duration: var(--transition-duration);
+
+    &-wrapper {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      opacity: 0;
+    }
   }
 
   &__details {
@@ -42,6 +46,12 @@
 
       & + .accordion__content {
         grid-template-rows: 1fr;
+      }
+
+      & + .accordion__content .accordion__content-body {
+        animation: show-content var(--transition-duration-extra-long)
+          ease-in-out forwards;
+        animation-delay: var(--transition-duration);
       }
     }
   }
@@ -92,7 +102,7 @@
       @include square(rem(44));
       content: "";
       right: 0;
-      background: url(/assets/images/icons/round-hearts-icon.webp);
+      background: url(../../assets/images/icons/round-hearts-icon.webp);
       border-radius: 50%;
     }
 
@@ -120,12 +130,14 @@
       padding-top: var(--offsetTop);
       border-top: var(--border);
       text-shadow: var(--accent-text-shadow);
+      opacity: 0;
 
       strong,
       ul {
         color: var(--color-accent-secondary);
         text-shadow: var(--accent-text-shadow-light);
       }
+
       ul {
         padding-left: rem(25);
         list-style: disc;

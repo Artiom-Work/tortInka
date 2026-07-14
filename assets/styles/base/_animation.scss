@@ -6,6 +6,7 @@
     background-color: var(--color-dark-opasity-90);
   }
 }
+
 @keyframes parallax-shift {
   from {
     transform: translate3d(0, calc(var(--parallax-shift) * -1), 0);
@@ -37,6 +38,15 @@
   }
 }
 
+@keyframes show-content {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes letter-appear {
   to {
     opacity: 1;
@@ -54,16 +64,16 @@
   }
 }
 
-// @keyframes hide-unit {
-//   0%,
-//   1% {
-//     visibility: visible;
-//   }
-//   100% {
-//     visibility: hidden;
-//     display: none;
-//   }
-// }
+@keyframes logo-shine {
+  0%,
+  20% {
+    background-position: 40% 0%;
+  }
+  90%,
+  100% {
+    background-position: -5840% 0%;
+  }
+}
 /*  ======================= */
 /* ==== END Animations ==== */
 /*  ======================= */

@@ -64,6 +64,7 @@
 
   --transition-duration: 0.3s;
   --transition-duration-long: 0.6s;
+  --transition-duration-extra-long: 0.9s;
 
   @include mobile-media {
     --header-height: #{rem(60)};

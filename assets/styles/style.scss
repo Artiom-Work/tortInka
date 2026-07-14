@@ -9,6 +9,7 @@
 @use "./blocks/common-blocks/logo";
 @use "./blocks/common-blocks/parallax-bg";
 @use "./blocks/common-blocks/buttons";
+@use "./blocks/common-blocks/contacts-link";
 @use "./blocks/common-blocks/custom-form";
 @use "./blocks/common-blocks/base-modal";
 // @use "./blocks/common-blocks/preloader";
@@ -18,6 +19,8 @@
 @use "./blocks/welcome-block";
 @use "./blocks/favorites";
 @use "./blocks/how-works";
+@use "./blocks/current-topic";
+@use "./blocks/contacts";
 @use "./blocks/faq";
 @use "./blocks/footer";
 @use "./blocks/confirm-submit";

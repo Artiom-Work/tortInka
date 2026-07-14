@@ -5,7 +5,7 @@
   position: relative;
   overflow: clip;
   border-radius: var(--border-radius-medium);
-  padding: fluid(50, 30);
+  padding: fluid(50, 30) fluid(50, 20);
   box-shadow: var(--box-shadow-light-blur);
 
   .parallax-bg--secondary {
@@ -16,6 +16,7 @@
   &__list {
     position: relative;
   }
+
   &__list {
     li:nth-child(even) .how-works__step {
       flex-direction: row-reverse;
@@ -125,15 +126,21 @@
         position: relative;
         z-index: 2;
       }
+
       span {
         color: var(--color-accent);
         font-family: var(--second-family);
         font-weight: 700;
         letter-spacing: 0.05em;
       }
+
       a {
         color: var(--color-accent);
         text-decoration: underline;
+
+        @include hover {
+          filter: brightness(80%);
+        }
       }
     }
   }

@@ -35,69 +35,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: rem(24);
+    gap: rem(30);
 
     time {
       color: var(--color-accent);
     }
 
-    li {
-      display: flex;
-      align-items: center;
-      column-gap: fluid(20, 10);
-
-      svg {
-        width: rem(44);
-        height: rem(44);
-        flex-shrink: 0;
-      }
-    }
-
-    svg {
+    li svg {
       fill: var(--color-gray-light);
-      stroke: var(--color-accent-third);
-    }
-  }
-
-  &__link {
-    fill: var(--color-accent);
-    will-change: transform;
-
-    @include hover {
-      fill: var(--color-accent-secondary);
-
-      a {
-        background-position: 0% 100%;
-        text-shadow: #{rem(1)} #{rem(2)} #{rem(5)} rgba(255, 255, 255, 0.25);
-      }
-    }
-
-    @include speciall-active {
-      svg {
-        scale: 0.9;
-        transition-duration: var(--transition-duration);
-      }
-    }
-
-    a {
-      display: flex;
-      align-items: center;
-      column-gap: rem(20);
-      font-weight: 600;
-      background-image: linear-gradient(
-        var(--color-gray-light) 50%,
-        var(--color-accent-secondary) 50%
-      );
-      background-size: 100% 200%;
-      color: transparent;
-      -webkit-background-clip: text;
-      background-clip: text;
-      text-shadow: var(--links-text-shadow);
-    }
-
-    &--phone {
-      @include fluid-text(24, 20);
-      white-space: nowrap;
     }
   }
 
