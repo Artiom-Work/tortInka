@@ -14,7 +14,7 @@
 
   &__image {
     width: 100%;
-    min-height: fluid(700, 450);
+    min-height: rem(700);
     object-fit: cover;
     border-radius: inherit;
 
@@ -30,14 +30,13 @@
   &__action {
     position: relative;
     z-index: 2;
-    display: flex;
-    flex-direction: column;
   }
 
   &__form {
     width: 100%;
     display: flex;
     flex-direction: column;
+    text-align: center;
   }
 }
 
@@ -45,6 +44,9 @@
   .callback-order {
     flex-direction: column-reverse;
     text-align: center;
+    &__image {
+      min-height: rem(450);
+    }
   }
 }
 

@@ -2,6 +2,7 @@ const PRELOADER_TEMPLATE = `
 		<div class="loader loader--sm" data-inline-loader>
 			<img class="loader__art" src="./assets/images/preloader/logo-tortInka-dark-pink.svg" width="250" height="197"
 				alt="">
+				
 
 			<svg class="loader__trace-svg loader__trace-svg--sm" viewBox="0 0 259 233" aria-hidden="true">
 				<path class="loader__trace loader__trace--halo"

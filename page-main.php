@@ -1,393 +1,20 @@
-<!DOCTYPE html>
-<html lang="ru">
+<?php
+/**
+	* Template Name: Шаблон "Главная страница"
+*/
+?>
+<?php get_header(); ?>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="icon" type="image/svg+xml" sizes="16x16" href="./assets/images/icons/favicon.svg">
-	<link rel="icon" type="image/svg+xml" sizes="32x32" href="./assets/images/icons/favicon.svg">
-	<link rel="icon" type="image/svg+xml" sizes="48x48" href="./assets/images/icons/favicon.svg">
-	<link rel="apple-touch-icon" sizes="180x180" href="./assets/images/icons/favicon.svg">
-	<!-- <meta name="description"
-		content=""> -->
-	<title>tortInka | Главная</title>
-	<link rel="stylesheet" href="./assets/libs/swiper/swiper-bundle.min.css">
-
-	<style id="preloader-critical-css">
-		/* ===  Preloader styles === */
-		html.is-loading,
-		html.is-loading body {
-			overflow: hidden;
-			height: 100%;
-		}
-
-		.preloader {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			position: absolute;
-			z-index: 10;
-			width: 100%;
-			height: 100vh;
-			background-color: #0e0c0c;
-			opacity: 1;
-			transition-duration: 1s;
-		}
-
-		.preloader.is-hidden {
-			animation: hide-preloader 1.5s ease-out;
-		}
-
-		.preloader__backdrop {
-			position: absolute;
-			overflow: hidden;
-			width: 100%;
-			height: 100%;
-			left: 50%;
-			top: 50%;
-			translate: -50% -50%;
-			border-radius: 50%;
-			background: radial-gradient(circle, rgba(116, 6, 47, 0.75) 0%, rgba(116, 6, 47, 0.01) 30%, transparent 100%);
-			filter: blur(30px);
-			pointer-events: none;
-		}
-
-		.preloader-block {
-			position: relative;
-			display: inline-block;
-		}
-
-		.preloader-block[aria-busy=true] span {
-			visibility: hidden;
-		}
-
-		.preloader-block--xs .loader--sm {
-			width: 2.375rem;
-			height: 1.875rem;
-		}
-
-		.preloader-block--xs .loader__trace-svg--sm {
-			top: -0.125rem;
-		}
-
-		.loader {
-			position: relative;
-			display: inline-flex;
-		}
-
-		.loader--full {
-			background-color: transparent;
-			width: 16.25rem;
-			height: 14.5625rem;
-		}
-
-		.loader--sm {
-			width: 3.5rem;
-			height: 3.125rem;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-
-		.loader__art {
-			position: absolute;
-			inset: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: contain;
-		}
-
-		.loader__trace {
-			fill: none;
-			stroke-linecap: round;
-			stroke-dasharray: 0.0001 1;
-			stroke-dashoffset: 1;
-			animation: loader-trace 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-		}
-
-		.loader__trace-svg {
-			position: absolute;
-			top: -1.25rem !important;
-			left: 0.25rem;
-			right: -0.25rem;
-			bottom: 0;
-			width: 100%;
-			height: 130%;
-			overflow: visible;
-			pointer-events: none;
-		}
-
-		.loader__trace-svg--sm {
-			top: -0.3125rem;
-			left: 0;
-		}
-
-		.loader__trace--halo {
-			stroke-width: 30;
-			filter: blur(0.4375rem);
-			opacity: 0.5;
-		}
-
-		.loader__trace--core {
-			stroke-width: 6;
-			filter: blur(0.0625rem) drop-shadow(0 0 0.375rem rgba(255, 255, 255, 0.9));
-			opacity: 1;
-		}
-
-		.loader__sheen {
-			position: absolute;
-			inset: 0;
-			pointer-events: none;
-			mix-blend-mode: overlay;
-			mask-image: url("./assets/images/preloader/logo-tortInka-dark-pink.svg");
-			mask-repeat: no-repeat;
-			mask-position: center;
-			mask-size: contain;
-			-webkit-mask-image: url("./assets/images/preloader/logo-tortInka-dark-pink.svg");
-			-webkit-mask-repeat: no-repeat;
-			-webkit-mask-position: center;
-			-webkit-mask-size: contain;
-			background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%);
-			background-size: 40% 100%;
-			background-repeat: no-repeat;
-			background-position: -40% 0;
-			animation: loader-sheen 2.8s ease-in infinite;
-		}
-
-		@keyframes loader-trace {
-			0% {
-				stroke-dashoffset: 1;
-				opacity: 0.5;
-			}
-
-			15% {
-				opacity: 1;
-			}
-
-			35% {
-				opacity: 0.5;
-			}
-
-			60% {
-				opacity: 1;
-			}
-
-			85% {
-				opacity: 0.6;
-			}
-
-			100% {
-				stroke-dashoffset: 0;
-				opacity: 1;
-			}
-		}
-
-		@keyframes loader-sheen {
-			0% {
-				background-position: -40% 0;
-			}
-
-			22% {
-				background-position: 140% 0;
-			}
-
-			100% {
-				background-position: 140% 0;
-			}
-		}
-
-		@keyframes hide-preloader {
-			0% {
-				opacity: 1;
-			}
-
-			99% {
-				opacity: 0;
-			}
-
-			100% {
-				display: none;
-			}
-		}
-
-		@media (prefers-reduced-motion: reduce) {
-
-			.loader__trace,
-			.loader__halo,
-			.loader__core,
-			.loader__sheen {
-				animation: none;
-			}
-		}
-	</style>
-
-	<script>document.documentElement.classList.add('is-loading');</script>
-
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			var preloader = document.querySelector('[data-preloader]');
-			if (!preloader) {
-				// Прелоудера нет на странице — сразу сообщаем остальным скриптам,
-				// что "загрузка завершена", чтобы welcome-блок не ждал вечно
-				document.dispatchEvent(new CustomEvent('preloader:hidden'));
-				return;
-			}
-
-			function hide() {
-				preloader.classList.add('is-hidden');
-				document.documentElement.classList.remove('is-loading');
-				document.dispatchEvent(new CustomEvent('preloader:hidden'));
-				setTimeout(function () {
-					preloader.remove();
-				}, 400);
-			}
-
-			window.addEventListener('load', hide);
-			setTimeout(hide, 8000);
-		});
-	</script>
-
-	<script src="./assets/libs/imask/imask7-6-1.min.js" defer></script>
-
-	<link rel="stylesheet" href="./assets//styles/style.css">
-</head>
-
-<body>
-	<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-		<defs>
-			<linearGradient id="logo-sheen-gradient" x1="0" y1="0" x2="1" y2="0">
-				<stop offset="0" stop-color="#fff" stop-opacity="0" />
-				<stop offset="0.5" stop-color="#fff" stop-opacity="0.9" />
-				<stop offset="1" stop-color="#fff" stop-opacity="0" />
-			</linearGradient>
-
-			<linearGradient id="logo-trace-gradient" x1="0" y1="0" x2="0" y2="1">
-				<stop offset="0" stop-color="#fff" stop-opacity="0" />
-				<stop offset="0.5" stop-color="#fff" stop-opacity="1" />
-				<stop offset="1" stop-color="#fff" stop-opacity="0" />
-			</linearGradient>
-		</defs>
-	</svg>
-
-	<div class="preloader" data-preloader>
-		<div class="preloader__backdrop"></div>
-
-		<div class="loader loader--full">
-			<img class="loader__art" src="./assets/images/preloader/logo-tortInka-dark-pink.svg" width="250" height="197"
-				alt="" aria-hidden="true">
-
-			<svg class="loader__trace-svg" viewBox="0 0 259 233" aria-hidden="true">
-				<path class="loader__trace loader__trace--halo"
-					d="M244.569 27.9018C278.632 94.7141 126.186 204.5 125.351 204.5C124.515 204.5 -23.9806 112.188 3.35934 35.7863C30.6992 -40.6154 122.713 35.2501 122.22 35.2508C121.728 35.2515 210.507 -38.9105 244.569 27.9018Z"
-					pathLength="1" fill="none" stroke="#fff"></path>
-
-				<path class="loader__trace loader__trace--core"
-					d="M244.569 27.9018C278.632 94.7141 126.186 204.5 125.351 204.5C124.515 204.5 -23.9806 112.188 3.35934 35.7863C30.6992 -40.6154 122.713 35.2501 122.22 35.2508C121.728 35.2515 210.507 -38.9105 244.569 27.9018Z"
-					pathLength="1" fill="none" stroke="#fff"></path>
-			</svg>
-
-			<div class="loader__sheen"></div>
-		</div>
-	</div>
-
-	<header class="header">
-		<div class="container">
-			<a class="header__logo logo" href="index.html">
-				<img class="logo__image" src="assets/images/logo.svg" width="95" height="75" alt="Логотип tirtInka">
-			</a>
-
-			<nav class="header__nav nav hidden-mobile">
-				<ul class="nav__list">
-					<li>
-						<a href="index.html">Домой</a>
-					</li>
-
-					<li>
-						<a href="https://tortinka.artiom-mezheynikov.ru/shop/">Музей вкусов</a>
-					</li>
-
-					<li>
-						<a href="index.html#contacts-title">Контакты</a>
-					</li>
-
-					<li>
-						<a href="page-about-me.html">Обо мне</a>
-					</li>
-				</ul>
-			</nav>
-
-			<div class="mobile-menu visible-mobile">
-				<input id="menu-switch" type="checkbox">
-				<label class="mobile-menu__burger" for="menu-switch">
-					<svg class="mobile-menu__burger-open" width="36" height="36">
-						<use xlink:href="./assets/images/icons/sprite-icons.svg#cake-button">
-						</use>
-					</svg>
-
-					<svg class="mobile-menu__burger-close" width="44" height="44">
-						<use xlink:href="./assets/images/icons/sprite-icons.svg#close-circle-icon">
-						</use>
-					</svg>
-				</label>
-
-				<div class="mobile-menu__wrapper">
-					<nav class="mobile-menu__box"
-						style="background:linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./assets/images/slogan/maid-with-love-text-rotate.webp) no-repeat right bottom / 250px 300px;">
-						<ul class="nav__list">
-							<li>
-								<a href="index.html">Домой</a>
-							</li>
-
-							<li>
-								<a href="https://tortinka.artiom-mezheynikov.ru/shop/">Музей вкусов</a>
-							</li>
-
-							<li>
-								<a href="index.html#contacts-title">Контакты</a>
-							</li>
-
-							<li>
-								<a href="page-about-me.html">Обо мне</a>
-							</li>
-						</ul>
-					</nav>
-				</div>
-			</div>
-
-			<ul class="header__soc1als visible-mobile">
-				<li>
-					<a href="viber://chat?number=%2B375297869845" aria-label="social-icon" target="_blank">
-						<img src="./assets/images/icons/viber-icon.svg" width="36" height="36" alt="" aria-hidden="true">
-					</a>
-				</li>
-
-				<li>
-					<a href="instagram://user?username=inna_3179" aria-label="social-icon" target="_blank">
-						<img src="./assets/images/icons/inst-icon.svg" width="36" height="36" alt="" aria-hidden="true">
-					</a>
-				</li>
-
-				<li>
-					<a href="https://t.me/+375297869845" aria-label="social-icon" target="_blank">
-						<img src="./assets/images/icons/telegram-icon.svg" width="36" height="36" alt="" aria-hidden="true">
-					</a>
-				</li>
-			</ul>
-		</div>
-	</header>
-
-	<main>
+<main>
 		<section class="hero" aria-labelledby="hero-title">
 			<h1 class="visually-hidden">Торты на заказ в Гомеле</h1>
 
 			<div class="parallax-bg parallax-bg--main"
-				style="background: url('./assets/images/hero/hero-background-image-2.webp') no-repeat top center / cover;">
+				style="background: url('<?php echo get_template_directory_uri(); ?>/assets/images/hero/hero-background-image-2.webp') no-repeat top center / cover;">
 			</div>
 
 			<div class="parallax-bg parallax-bg--secondary"
-				style="background: url('./assets/images/hero/hero-background-image.webp') no-repeat top center / cover;">
+				style="background: url('<?php echo get_template_directory_uri(); ?>/assets/images/hero/hero-background-image.webp') no-repeat top center / cover;">
 			</div>
 
 			<div class="container">
@@ -403,7 +30,7 @@
 					</button>
 				</div>
 
-				<img class="hero__image" src="./assets/images/hero/hero-main-image.webp" width="345" height="300"
+				<img class="hero__image" src="<?php echo get_template_directory_uri(); ?>/assets/images/hero/hero-main-image.webp" width="345" height="300"
 					alt="Детский торт">
 			</div>
 		</section>
@@ -418,9 +45,9 @@
 					<ul class="swiper-wrapper">
 						<li class="swiper-slide">
 							<article class="favorites__card coffee-bg">
-								<figure class="favorites__card-image-wrapper image-slot preloader-block">
-									<a href="./assets/images/products/favorite-cake-1.webp" target="_blank">
-										<img class="favorites__card-image" src="./assets/images/products/favorite-cake-1.webp" width="280"
+								<figure class="favorites__card-image-wrapper image-slot">
+									<a href="<?php echo get_template_directory_uri(); ?>/assets/images/products/favorite-cake-1.webp" target="_blank">
+										<img class="favorites__card-image" src="<?php echo get_template_directory_uri(); ?>/assets/images/products/favorite-cake-1.webp" width="280"
 											height="280" alt="Торт для мальчиков" loading="lazy">
 									</a>
 								</figure>
@@ -452,9 +79,9 @@
 
 						<li class="swiper-slide">
 							<article class="favorites__card coffee-bg">
-								<figure class="favorites__card-image-wrapper image-slot preloader-block">
-									<a href="./assets/images/products/favorite-cake-2.webp" target="_blank">
-										<img class="favorites__card-image" src="./assets/images/products/favorite-cake-2.webp" width="280"
+								<figure class="favorites__card-image-wrapper image-slot">
+									<a href="<?php echo get_template_directory_uri(); ?>/assets/images/products/favorite-cake-2.webp" target="_blank">
+										<img class="favorites__card-image" src="<?php echo get_template_directory_uri(); ?>/assets/images/products/favorite-cake-2.webp" width="280"
 											height="280" alt="Торт для девочек" loading="lazy">
 									</a>
 								</figure>
@@ -486,9 +113,9 @@
 
 						<li class="swiper-slide">
 							<article class="favorites__card coffee-bg">
-								<figure class="favorites__card-image-wrapper image-slot preloader-block">
-									<a href="./assets/images/products/favorite-cake-3.webp" target="_blank">
-										<img class="favorites__card-image" src="./assets/images/products/favorite-cake-3.webp" width="280"
+								<figure class="favorites__card-image-wrapper image-slot">
+									<a href="<?php echo get_template_directory_uri(); ?>/assets/images/products/favorite-cake-3.webp" target="_blank">
+										<img class="favorites__card-image" src="<?php echo get_template_directory_uri(); ?>/assets/images/products/favorite-cake-3.webp" width="280"
 											height="280" alt="Торт любимой жене" loading="lazy">
 									</a>
 								</figure>
@@ -520,9 +147,9 @@
 
 						<li class="swiper-slide">
 							<article class="favorites__card coffee-bg">
-								<figure class="favorites__card-image-wrapper image-slot preloader-block">
-									<a href="./assets/images/products/favorite-cake-4.webp" target="_blank">
-										<img class="favorites__card-image" src="./assets/images/products/favorite-cake-4.webp" width="280"
+								<figure class="favorites__card-image-wrapper image-slot">
+									<a href="<?php echo get_template_directory_uri(); ?>/assets/images/products/favorite-cake-4.webp" target="_blank">
+										<img class="favorites__card-image" src="<?php echo get_template_directory_uri(); ?>/assets/images/products/favorite-cake-4.webp" width="280"
 											height="280" alt="Торт победный" loading="lazy">
 									</a>
 								</figure>
@@ -558,11 +185,11 @@
 
 		<section class="how-works container fade-in" aria-labelledby="how-works-title">
 			<div class="parallax-bg parallax-bg--main"
-				style="background: url('./assets/images/how-works/how-works-bg-main.webp') no-repeat top center / cover;">
+				style="background: url('<?php echo get_template_directory_uri(); ?>/assets/images/how-works/how-works-bg-main.webp') no-repeat top center / cover;">
 			</div>
 
 			<div class="parallax-bg parallax-bg--secondary"
-				style="background: url('./assets/images/how-works/how-works-bg-second.webp') no-repeat center  / contain;">
+				style="background: url('<?php echo get_template_directory_uri(); ?>/assets/images/how-works/how-works-bg-second.webp') no-repeat center  / contain;">
 			</div>
 
 			<h2 class="how-works__title fade-in" data-delay="900" id="how-works-title">
@@ -668,14 +295,13 @@
 					</article>
 				</li>
 			</ul>
-
 		</section>
 
 		<section class="current-topic container fade-in" aria-labelledby="current-topic-title">
 			<h2 class="visually-hidden">Тема для на сайте tortInka</h2>
 
 			<figure class="current-topic__image-wrapper image-slot preloader-block fade-in" data-delay="600">
-				<img class="current-topic__image" src="./assets/images/current-topic/current-topic-1.webp" width="450"
+				<img class="current-topic__image" src="<?php echo get_template_directory_uri(); ?>/assets/images/current-topic/current-topic-1.webp" width="450"
 					height="450" alt="С Днём Рождения, Инна" loading="lazy">
 			</figure>
 
@@ -702,7 +328,7 @@
 				</div>
 
 				<div class="contacts-link fade-in" data-delay="400">
-					<a class="current-topic__link contacts-link" href="page-about-me.html">Читать больше обо мне&nbsp;&rarr;</a>
+					<a class="current-topic__link contacts-link" href="#!">Читать больше обо мне&nbsp;&rarr;</a>
 				</div>
 			</article>
 		</section>
@@ -711,7 +337,7 @@
 			<h2 class="visually-hidden">Контакты для заказа кондитерских изделий на сайта tortInka</h2>
 
 			<div class="parallax-bg parallax-bg--secondary"
-				style="background: url('./assets/images/contacts/chocko-paralax-bg.webp') no-repeat center  / cover;">
+				style="background: url('<?php echo get_template_directory_uri(); ?>/assets/images/contacts/chocko-paralax-bg.webp') no-repeat center  / cover;">
 			</div>
 
 			<div class="contacts__wrapper">
@@ -730,67 +356,41 @@
 
 				<div class="contacts__body">
 					<figure class="contacts__image-wrapper image-slot preloader-block fade-in" data-delay="400">
-						<img class="contacts__image" src="./assets/images/contacts/contact-photo.webp" width="300" height="300"
+						<img class="contacts__image" src="<?php echo get_template_directory_uri(); ?>/assets/images/contacts/contact-photo.webp" width="300" height="300"
 							alt="Фото Инны Чаплиной" loading="lazy">
 					</figure>
 
 					<ul class="contacts__soc1als fade-in" data-delay="800">
 						<li>
-							<a href="https://t.me/+375297869845" aria-label="social-icon" target="_blank">
-								<img src="./assets/images/icons/telegram-icon-purple.svg" width="36" height="36" alt=""
+							<a href="#!" aria-label="social-icon" target="_blank">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/telegram-icon-purple.svg" width="36" height="36" alt=""
 									aria-hidden="true">
 							</a>
 						</li>
 
 						<li>
-							<a href="instagram://user?username=inna_3179" aria-label="social-icon" target="_blank">
-								<img src="./assets/images/icons/inst-icon-purple.svg" width="36" height="36" alt="" aria-hidden="true">
+							<a href="#!" aria-label="social-icon" target="_blank">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/inst-icon-purple.svg" width="36" height="36" alt="" aria-hidden="true">
 							</a>
 						</li>
 
 						<li>
-							<a href="viber://chat?number=%2B375297869845" aria-label="social-icon" target="_blank">
-								<img src="./assets/images/icons/viber-icon.svg" width="36" height="36" alt="" aria-hidden="true">
+							<a href="#!" aria-label="social-icon" target="_blank">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/viber-icon.svg" width="36" height="36" alt="" aria-hidden="true">
 							</a>
 						</li>
 					</ul>
 				</div>
 
 				<div class="contacts__action callback-order brand-bg fade-in" data-delay="400">
-					<form class="callback-order__form custom-form" action="" data-ajax-form data-success-modal="succSubmitModal"
-						data-error-modal="errorSubmitModal">
-						<span>
-							<label for="userName">Как к&nbsp;вам лучше обращаться?</label>
-
-							<input id="userName" name="name" placeholder="Мария Валентиновна">
-						</span>
-
-						<span>
-							<label for="userPhoneNumber">Ваш телефон</label>
-
-							<input id="userPhoneNumber" name="number" placeholder="(99) 999-99-99" data-js-input-mask="(00) 000-00-00"
-								required>
-						</span>
-
-						<span>
-							<label for="userNote">Пожелания и&nbsp;предпочтения</label>
-
-							<textarea id="userNote" name="note"
-								placeholder="Можно указать название угощения, дату приготовления, пожелания к упаковке, особенности декора и прочее..."></textarea>
-						</span>
-
-						<button class="custom-form__button button button--accent preloader-block preloader-block--xs" type="submit"
-							title="Отправить заявку на обратный звонок">
-							Отправить заявку
-						</button>
-					</form>
+						<?php echo do_shortcode('[contact-form-7 [contact-form-7 id="23e9cf2" title="Форма обратной связи в блоке контактов" html_class="callback-order__form custom-form"]'); ?>
 				</div>
 
 				<ul class="contacts__list fade-in" data-delay="400">
 					<li class="contacts-link contacts-link--phone">
 						<a href="tel:+375297869845">
 							<svg width="44" height="44">
-								<use xlink:href="./assets/images/icons/sprite-icons.svg#phone-icon">
+								<use xlink:href="<?php echo get_template_directory_uri(); ?>/assets/images/icons/sprite-icons.svg#phone-icon">
 								</use>
 							</svg>
 
@@ -801,7 +401,7 @@
 					<li class="contacts-link">
 						<a href="https://yandex.by/maps/-/CTBPFJJA" target="_blank" rel="noopener noreferrer">
 							<svg width="44" height="44">
-								<use xlink:href="./assets/images/icons/sprite-icons.svg#location-point">
+								<use xlink:href="<?php echo get_template_directory_uri(); ?>/assets/images/icons/sprite-icons.svg#location-point">
 								</use>
 							</svg>
 
@@ -822,12 +422,12 @@
 			<div class="faq__accordion">
 				<div class="accordion coffee-bg fade-in" data-delay="100">
 					<figure class="accordion__image-wrapper image-slot">
-						<img class="accordion__image" src="./assets/images/accordion/accordion-bg-main.webp" width="1000"
+						<img class="accordion__image" src="<?php echo get_template_directory_uri(); ?>/assets/images/accordion/accordion-bg-main.webp" width="1000"
 							height="165" alt="Изделя от Инны Чаплиной" loading="lazy">
 					</figure>
 
 					<div class="parallax-bg parallax-bg--secondary"
-						style="background: url('./assets/images/accordion/accodion-paralax-bg.webp') no-repeat top  / cover;">
+						style="background: url('<?php echo get_template_directory_uri(); ?>/assets/images/accordion/accodion-paralax-bg.webp') no-repeat top  / cover;">
 					</div>
 
 					<details class="accordion__details" name="faq">
@@ -876,12 +476,12 @@
 
 				<div class="accordion coffee-bg fade-in" data-delay="200">
 					<figure class="accordion__image-wrapper image-slot">
-						<img class="accordion__image" src="./assets/images/accordion/accordion-bg-main.webp" width="1000"
+						<img class="accordion__image" src="<?php echo get_template_directory_uri(); ?>/assets/images/accordion/accordion-bg-main.webp" width="1000"
 							height="165" alt="Изделя от Инны Чаплиной" loading="lazy">
 					</figure>
 
 					<div class="parallax-bg parallax-bg--secondary"
-						style="background: url('./assets/images/accordion/accodion-paralax-bg.webp') no-repeat top  / cover;">
+						style="background: url('<?php echo get_template_directory_uri(); ?>/assets/images/accordion/accodion-paralax-bg.webp') no-repeat top  / cover;">
 					</div>
 
 					<details class="accordion__details" name="faq">
@@ -914,12 +514,12 @@
 
 				<div class="accordion coffee-bg fade-in" data-delay="300">
 					<figure class="accordion__image-wrapper image-slot">
-						<img class="accordion__image" src="./assets/images/accordion/accordion-bg-main.webp" width="1000"
+						<img class="accordion__image" src="<?php echo get_template_directory_uri(); ?>/assets/images/accordion/accordion-bg-main.webp" width="1000"
 							height="165" alt="Изделя от Инны Чаплиной" loading="lazy">
 					</figure>
 
 					<div class="parallax-bg parallax-bg--secondary"
-						style="background: url('./assets/images/accordion/accodion-paralax-bg.webp') no-repeat top  / cover;">
+						style="background: url('<?php echo get_template_directory_uri(); ?>/assets/images/accordion/accodion-paralax-bg.webp') no-repeat top  / cover;">
 					</div>
 
 					<details class="accordion__details" name="faq">
@@ -967,12 +567,12 @@
 
 				<div class="accordion coffee-bg fade-in" data-delay="400">
 					<figure class="accordion__image-wrapper image-slot">
-						<img class="accordion__image" src="./assets/images/accordion/accordion-bg-main.webp" width="1000"
+						<img class="accordion__image" src="<?php echo get_template_directory_uri(); ?>/assets/images/accordion/accordion-bg-main.webp" width="1000"
 							height="165" alt="Изделя от Инны Чаплиной" loading="lazy">
 					</figure>
 
 					<div class="parallax-bg parallax-bg--secondary"
-						style="background: url('./assets/images/accordion/accodion-paralax-bg.webp') no-repeat top  / cover;">
+						style="background: url('<?php echo get_template_directory_uri(); ?>/assets/images/accordion/accodion-paralax-bg.webp') no-repeat top  / cover;">
 					</div>
 
 					<details class="accordion__details" name="faq">
@@ -1005,12 +605,12 @@
 
 				<div class="accordion coffee-bg fade-in" data-delay="500">
 					<figure class="accordion__image-wrapper image-slot">
-						<img class="accordion__image" src="./assets/images/accordion/accordion-bg-main.webp" width="1000"
+						<img class="accordion__image" src="<?php echo get_template_directory_uri(); ?>/assets/images/accordion/accordion-bg-main.webp" width="1000"
 							height="165" alt="Изделя от Инны Чаплиной" loading="lazy">
 					</figure>
 
 					<div class="parallax-bg parallax-bg--secondary"
-						style="background: url('./assets/images/accordion/accodion-paralax-bg.webp') no-repeat top  / cover;">
+						style="background: url('<?php echo get_template_directory_uri(); ?>/assets/images/accordion/accodion-paralax-bg.webp') no-repeat top  / cover;">
 					</div>
 
 					<details class="accordion__details" name="faq" open>
@@ -1057,7 +657,7 @@
 
 		<div class="welcome-block">
 			<div class="welcome-block__wrapper">
-				<img class="welcome-block__image" src="./assets/images/welcome-image.webp" width="360" height="458" alt=""
+				<img class="welcome-block__image" src="<?php echo get_template_directory_uri(); ?>/assets/images/welcome-image.webp" width="360" height="458" alt=""
 					aria-hidden="true">
 
 				<div class="welcome-block__text">
@@ -1066,225 +666,6 @@
 				</div>
 			</div>
 		</div>
-	</main>
+</main>
 
-	<footer class="footer fade-in">
-		<div class="parallax-bg parallax-bg--main"
-			style="background: url('./assets/images/footer/footer-bg.webp') no-repeat top center / cover;">
-		</div>
-
-		<div class="parallax-bg parallax-bg--secondary"
-			style="background: url('./assets/images/footer/footer-bg-2.webp') no-repeat top center / cover;">
-		</div>
-
-		<div class="container">
-			<a class="footer__logo logo fade-in" data-delay="200" href="index.html">
-				<img class="logo__image" src="./assets/images/logo-big-red.svg" width="127" height="100" alt="Логотип tortInka">
-			</a>
-
-			<div class="footer__slogan h3 fade-in" data-delay="300">
-				<p>
-					Здесь всё сделано вручную, с&nbsp;теплом и&nbsp;заботой о&nbsp;вас!
-				</p>
-			</div>
-
-			<ul class="footer__connect-list">
-				<li class="contacts-link fade-in" data-delay="200">
-					<a href="https://yandex.by/maps/-/CTBPFJJA" target="_blank" rel="noopener noreferrer">
-						<svg width="44" height="44">
-							<use xlink:href="./assets/images/icons/sprite-icons.svg#location-point">
-							</use>
-						</svg>
-
-						<address>
-							Республика Беларусь, город Гомель
-						</address>
-					</a>
-				</li>
-
-				<li class="contacts-link contacts-link--phone fade-in" data-delay="400">
-					<a href="tel:+375297869845">
-						<svg width="44" height="44">
-							<use xlink:href="./assets/images/icons/sprite-icons.svg#phone-icon">
-							</use>
-						</svg>
-
-						<span>+375 (29) 786-98-45</span>
-					</a>
-				</li>
-
-				<li class="contacts-link fade-in" data-delay="600">
-					<svg width="44" height="44">
-						<use xlink:href="./assets/images/icons/sprite-icons.svg#work-time">
-						</use>
-					</svg>
-
-					<p>
-						Принимаю заказы с&nbsp;<time datetime="09:00">9:00</time>&nbsp;до&nbsp;<time datetime="21:00">21:00</time>
-					</p>
-				</li>
-			</ul>
-
-			<div class="contacts-link contacts-link--document fade-in" data-delay="600">
-				<a href="./assets/images/certificates/certificate-1.webp" target="_blank">
-					<svg width="44" height="44">
-						<use xlink:href="./assets/images/icons/sprite-icons.svg#document">
-						</use>
-					</svg>
-
-					<span>Сертификат кондитера</span>
-				</a>
-			</div>
-
-
-			<div class="footer__copyright">
-				<p>
-					© 2026, 𝓘𝓷𝓷𝓪 𝓒𝓱𝓪𝓹𝓵𝓲𝓷𝓪. <span class="accent-font third-accent-color words-no-wrap">Сделано с
-						любовью...</span>
-				</p>
-			</div>
-
-		</div>
-	</footer>
-
-	<dialog class="base-modal" id="succSubmitModal">
-		<form class="base-modal__close-overlay-wrapper" method="dialog">
-			<button class="base-modal__close-overlay" type="submit">
-				<span class="visually-hidden">Область закрытия модального окна уведомления об успешной отправке заказа на сайте
-					tortInka</span>
-			</button>
-		</form>
-
-		<div class="base-modal__inner">
-			<section class="base-modal__content confirm-submit" aria-labelledby="succ-submit-title">
-				<h3 class="visually-hidden">Успешная отправка заказа на сайте tortInka</h3>
-
-				<div>
-					<h4 class="confirm-submit__title h1" id="succ-submit-title">
-						Ваша заявка<br>
-						успешно отправлена!
-					</h4>
-
-					<div class="confirm-submit__text">
-						<p>
-							Я свяжусь с&nbsp;вами в&nbsp;ближайшее время
-						</p>
-					</div>
-
-					<a class="button" href="./index.html">
-						Домой
-					</a>
-				</div>
-
-				<figure class="confirm-submit__image-wrapper image-slot preloader-block">
-					<img class="confirm-submit__image" src="./assets/images/modals/thank-you.webp" width="450" height="400"
-						alt="Спасибо за ваш заказ" loading="lazy">
-				</figure>
-			</section>
-		</div>
-	</dialog>
-
-	<dialog class="base-modal" id="errorSubmitModal">
-		<form class="base-modal__close-overlay-wrapper" method="dialog">
-			<button class="base-modal__close-overlay" type="submit">
-				<span class="visually-hidden">Область закрытия модального окна уведомления об успешной отправке заказа на сайте
-					tortInka</span>
-			</button>
-		</form>
-
-		<div class="base-modal__inner">
-			<section class="base-modal__content confirm-submit" aria-labelledby="confirm-submit-title">
-				<h3 class="visually-hidden">Сообщение пользователю об ошибке отправки данных на сайте tortInka</h3>
-
-				<div>
-					<h4 class="confirm-submit__title confirm-submit__title--fail h1" id="confirm-submit-title">
-						Что-то пошло не&nbsp;так&nbsp;.<br>
-						Извините&nbsp;...
-					</h4>
-
-					<div class="confirm-submit__text">
-						<p>
-							Попробуйте ещё раз...
-						</p>
-					</div>
-
-					<a class="button" href="./index.html">
-						Домой
-					</a>
-				</div>
-
-				<figure class="confirm-submit__image-wrapper image-slot preloader-block">
-					<img class="confirm-submit__image" src="./assets/images/modals/sorry-image.webp" width="450" height="400"
-						alt="Извините, что-то пошло не так" loading="lazy">
-				</figure>
-			</section>
-		</div>
-	</dialog>
-
-	<dialog class="base-modal" id="callBackModal">
-		<form class="base-modal__close-overlay-wrapper" method="dialog">
-			<button class="base-modal__close-overlay" type="submit">
-				<span class="visually-hidden">Область закрытия модального окна для заказа на сайте tortInka</span>
-			</button>
-		</form>
-
-		<div class="base-modal__inner">
-			<section class="base-modal__content callback-order">
-				<form class="base-modal__close-button-wrapper" method="dialog">
-					<button class="base-modal__close-button" type="submit">
-						<span class="visually-hidden">
-							Кнопка для закрывания заявки на обратный звонок
-						</span>
-
-						<svg class="base-modal__close-button-icon" width="44" height="44">
-							<use xlink:href="./assets/images/icons/sprite-icons.svg#close-circle-icon">
-							</use>
-						</svg>
-					</button>
-				</form>
-				<h3 class="visually-hidden">Заказ кондитерского изделия на сайте tortInka</h3>
-
-				<div class="callback-order__image-wrapper image-slot preloader-block">
-					<img class="callback-order__image" src="./assets/images/modals/callback-form-bg.webp" width="550" height="750"
-						alt="" aria-hidden="true">
-				</div>
-
-				<div class="callback-order__action">
-					<form class="callback-order__form custom-form" action="" data-ajax-form data-success-modal="succSubmitModal"
-						data-error-modal="errorSubmitModal">
-						<span>
-							<label for="customerName">Как к&nbsp;вам лучше обращаться?</label>
-
-							<input id="customerName" name="name" placeholder="Мария Валентиновна">
-						</span>
-
-						<span>
-							<label for="phoneNumber">Ваш телефон</label>
-
-							<input id="phoneNumber" name="number" placeholder="(99) 999-99-99" data-js-input-mask="(00) 000-00-00"
-								required>
-						</span>
-
-						<span>
-							<label for="customerNote">Пожелания и&nbsp;предпочтения</label>
-
-							<textarea id="customerNote" name="note"
-								placeholder="Можно указать название торта, дату приготовления, пожелания к упаковке, особенности декора и прочее..."></textarea>
-						</span>
-						<button class="custom-form__button button preloader-block preloader-block--xs" type="submit"
-							title="Отправить заявку на обратный звонок">
-							Отправить заявку
-						</button>
-					</form>
-				</div>
-
-			</section>
-		</div>
-	</dialog>
-
-	<script src="./assets/libs/swiper/swiper-bundle.min.js"></script>
-	<script type="module" src="./assets/js/favorites-slider.js"></script>
-	<script type="module" src="assets/js/main.js"></script>
-</body>
-
-</html>
+<?php get_footer(); ?>

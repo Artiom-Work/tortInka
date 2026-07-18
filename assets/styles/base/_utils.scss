@@ -91,7 +91,7 @@
       #b58243 65%,
       #a4825e 85%,
       #9b6529 100%
-    );
+    ) !important;
   background-color: #663806;
 }
 
@@ -120,6 +120,7 @@
       var(--color-rose) 80%,
       var(--color-red) 100%
     );
+
   background-color: var(--color-purple-dark);
 }
 

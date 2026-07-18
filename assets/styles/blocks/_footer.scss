@@ -4,6 +4,8 @@
   padding-block: fluid(50, 20);
   position: relative;
   overflow: clip;
+  border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+  box-shadow: var(--box-shadow-dark-blur);
 
   .container {
     @include flex-center;

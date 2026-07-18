@@ -4,6 +4,19 @@
   position: relative;
   overflow: clip;
   border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
+  box-shadow: var(--box-shadow-dark-blur);
+
+  &-shop {
+    margin-top: calc(var(--header-height) * -1);
+
+    .parallax-bg--secondary {
+      --parallax-shift: 20%;
+    }
+
+    .container {
+      padding-block: fluid(150, 90) rem(40);
+    }
+  }
 
   .container {
     position: relative;
@@ -11,10 +24,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-block: fluid(125, 90) rem(100);
+    padding-block: rem(150) rem(100);
     text-align: center;
   }
 
+  &--about-page {
+    .container {
+      padding-block: rem(150) rem(50);
+    }
+  }
   &__body {
     position: relative;
     z-index: 3;
@@ -28,6 +46,33 @@
     letter-spacing: 0.03em;
     line-height: 1.4;
     text-shadow: var(--accent-text-shadow);
+
+    &-note {
+      @include fluid-text(30, 24);
+
+      display: block;
+      color: var(--color-gray-medium);
+      font-family: var(--font-family);
+      letter-spacing: -0.01em;
+      text-shadow: var(--accent-text-dark);
+      margin-bottom: rem(20);
+      font-weight: 400;
+    }
+
+    &--shop-page {
+      max-width: rem(800);
+      padding-right: rem(300);
+      margin-bottom: 0;
+      text-align: start;
+      margin-bottom: rem(100);
+    }
+
+    &--about-page {
+      @include fluid-text(40, 28);
+
+      padding-top: rem(500);
+      margin-bottom: rem(40);
+    }
   }
 
   &__subtitle {
@@ -41,6 +86,29 @@
     margin-inline: auto;
     margin-bottom: fluid(30, 10);
     text-shadow: var(--accent-text-shadow);
+
+    &--about-page {
+      @include fluid-text(40, 32);
+
+      max-width: unset;
+    }
+  }
+
+  &__text {
+    color: var(--color-gray-medium);
+    text-shadow: var(--accent-text-shadow);
+
+    &--shop-page {
+      @include fluid-text(22, 18);
+
+      max-width: rem(800);
+      padding-inline: fluid(130, 20) fluid(80, 0);
+    }
+
+    &--about-page {
+      max-width: rem(600);
+      margin-bottom: rem(20);
+    }
   }
 
   &__image {
@@ -50,15 +118,19 @@
     height: fluid(300, 250);
     bottom: fluid(300, 250);
     object-fit: cover;
+
+    &--about-page {
+      top: 0;
+      width: rem(500);
+      height: rem(650);
+    }
   }
 }
 
 @include tablet-media {
   .hero {
     .parallax-bg--secondary {
-      --parallax-shift: 30%;
-
-      background-size: 100% 100% !important;
+      --parallax-shift: 20%;
     }
   }
 }
@@ -66,6 +138,24 @@
   .hero {
     &__title {
       line-height: 1.5;
+
+      &--shop-page {
+        padding-right: fluid(300, 0);
+      }
+
+      &--about-page {
+        padding-top: rem(270);
+        margin-bottom: rem(30);
+      }
+    }
+
+    &__text--shop-page {
+      text-align: end;
+    }
+
+    &__image--about-page {
+      width: rem(360);
+      height: rem(468);
     }
   }
 }

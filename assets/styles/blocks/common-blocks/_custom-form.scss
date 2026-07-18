@@ -43,6 +43,7 @@
 
   textarea {
     min-height: rem(100);
+    max-height: rem(160);
     padding: rem(5);
     font-size: rem(16);
     resize: none;
@@ -51,7 +52,7 @@
 
   &__button {
     display: inline-flex;
-    align-self: center;
+    justify-self: center;
   }
 }
 

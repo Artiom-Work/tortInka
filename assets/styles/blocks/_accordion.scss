@@ -15,9 +15,11 @@
       opacity: 1;
     }
   }
+
   .parallax-bg--secondary {
     --parallax-shift: 20%;
   }
+
   &__image {
     width: 100%;
     min-height: fluid(165, 56);
@@ -107,7 +109,7 @@
     }
 
     @include hover {
-      color: var(--color-accent);
+      color: var(--color-accent-secondary);
     }
   }
 

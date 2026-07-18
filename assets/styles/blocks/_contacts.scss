@@ -75,15 +75,25 @@
     }
 
     a {
+      @include square(rem(60));
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: var(--box-shadow-dark);
+      will-change: transform;
+
       @include hover {
         filter: brightness(120%);
+        scale: 1.05;
       }
 
       @include speciall-active {
-        filter: brightness(100%);
+        filter: brightness(95%);
 
         img {
-          scale: 0.97;
+          scale: 0.92;
         }
       }
     }

@@ -1,6 +1,5 @@
-// functions.php
 <?php
-/* В самом самом начале добавить класс с отключение скролла */
+/*  класс для отключение скролла */
 add_action('wp_head', 'tortinka_lock_scroll_early', 0); 
 
 function tortinka_lock_scroll_early() {
@@ -9,10 +8,11 @@ function tortinka_lock_scroll_early() {
     <?php
 }
 
-/* Стили для прелоудера должны быть первыми */
+/* Стили для прелоудера */
 add_action('wp_head', 'tortinka_preloader_critical_css', 1);
 
 function tortinka_preloader_critical_css() {
+	    $logo_url = get_theme_mod( 'preloader_logo', get_template_directory_uri() . '/assets/images/preloader/logo-tortInka-dark-pink.svg' );
     ?>
     <style id="preloader-critical-css">
 			/* ===  Preloader styles === */
@@ -21,6 +21,15 @@ function tortinka_preloader_critical_css() {
 				overflow: hidden;
 				height: 100%;
 			}
+			body.woocommerce-page svg.loader__trace-svg,
+			body.woocommerce-page .loader__sheen{
+				top: -2.25rem !important;
+			}
+
+			.woocommerce .loader::before {
+				display: none !important;
+			}
+
 			.preloader {
 				display: flex;
 				align-items: center;
@@ -105,7 +114,7 @@ function tortinka_preloader_critical_css() {
 
 			.loader__trace-svg {
 				position: absolute;
-				top: -1.25rem;
+				top: -1.25rem !important;
 				left: 0.25rem;
 				right: -0.25rem;
 				bottom: 0;
@@ -137,11 +146,11 @@ function tortinka_preloader_critical_css() {
 				inset: 0;
 				pointer-events: none;
 				mix-blend-mode: overlay;
-				mask-image: url("/assets/images/preloader/logo-tortInka-dark-pink.svg");
+				mask-image: url("<?php echo esc_url( $logo_url ); ?>");
 				mask-repeat: no-repeat;
 				mask-position: center;
 				mask-size: contain;
-				-webkit-mask-image: url("/assets/images/preloader/logo-tortInka-dark-pink.svg");
+				-webkit-mask-image: url("<?php echo esc_url( $logo_url ); ?>");
 				-webkit-mask-repeat: no-repeat;
 				-webkit-mask-position: center;
 				-webkit-mask-size: contain;
@@ -268,6 +277,158 @@ function tortinka_preloader_hide_script() {
 		</script>
     <?php
 }
+
+add_action( 'wp_enqueue_scripts', function() {
+		wp_enqueue_style( 'swiper-css', get_template_directory_uri() . '/assets/libs/swiper/swiper-bundle.min.css', array(), '11.2.4' );
+
+		wp_enqueue_style( 'style', get_template_directory_uri() . '/assets/styles/style.css' );
+
+		wp_enqueue_script( 'imask', get_template_directory_uri() . '/assets/libs/imask/imask7-6-1.min.js', array(), '7.6.1', true );
+
+		wp_enqueue_script( 'swiper-js', get_template_directory_uri() . '/assets/libs/swiper/swiper-bundle.min.js', array(), '11.2.4', true );
+
+		wp_enqueue_script( 'favotites-swiper-init', get_template_directory_uri() . '/assets/js/favorites-slider.js', array( 'swiper-js' ), null, true );
+
+		wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array(), null, true );
+		/* Для передачи URL а PHP формате в js файл ( на прямую нельзя ). Подходит ко многим вариантам , но в моём случае путь нужен в в модуле inline-preloader.js для шаблонизатора. Создаётся глобальная переменная ...*/
+		wp_localize_script( 'main', 'themeSettings', array('templateUrl' => get_template_directory_uri(),) );
+
+});
+
+/* Добавляет тип module для скриптов при его рендеренге */
+add_filter( 'script_loader_tag', function( $tag, $handle, $src ) {
+    if ( 'main' === $handle ) {
+        return '<script type="module" src="' . esc_url( $src ) . '"></script>';
+    }
+
+   if ( 'favotites-swiper-init' === $handle ) {
+        return '<script type="module" src="' . esc_url( $src ) . '"></script>';
+    }
+
+    return $tag;
+}, 10, 3 );
+
+/* Для работы с админкой */
+add_theme_support("post-thumbnails");
+add_theme_support("title-tag");
+add_theme_support("custom-logo");
+
+/* Для работы svg */
+add_filter( 'upload_mimes', 'svg_upload_allow' );
+
+function svg_upload_allow( $mimes ) {
+	$mimes['svg']  = 'image/svg+xml';
+
+	return $mimes;
+}
+add_filter( 'wp_check_filetype_and_ext', 'fix_svg_mime_type', 10, 5 );
+
+function fix_svg_mime_type( $data, $file, $filename, $mimes, $real_mime = '' ){
+
+	if( version_compare( $GLOBALS['wp_version'], '5.1.0', '>=' ) ){
+		$dosvg = in_array( $real_mime, [ 'image/svg', 'image/svg+xml' ] );
+	}
+	else {
+		$dosvg = ( '.svg' === strtolower( substr( $filename, -4 ) ) );
+	}
+
+	if( $dosvg ){
+
+		if( current_user_can('manage_options') ){
+
+			$data['ext']  = 'svg';
+			$data['type'] = 'image/svg+xml';
+		}
+		else {
+			$data['ext']  = false;
+			$data['type'] = false;
+		}
+
+	}
+
+	return $data;
+}
+/* Хук для телегрм бота перехватывающий отправку формы */
+add_action('wpcf7_before_send_mail', 'tortinka_send_to_telegram');
+
+function tortinka_send_to_telegram($contact_form) {
+    $submission = WPCF7_Submission::get_instance();
+    if (!$submission) return;
+
+    $data = $submission->get_posted_data();
+
+    $name  = sanitize_text_field($data['your-name'] ?? 'Не указано');
+    $phone = sanitize_text_field($data['your-phone'] ?? 'Не указан');
+    $note  = sanitize_textarea_field($data['your-note'] ?? '—');
+
+    $message = "🎂 Новая заявка с сайта tortInka\n\n";
+    $message .= "👤 Имя: {$name}\n";
+    $message .= "📞 Телефон: {$phone}\n";
+    $message .= "📝 Пожелания: {$note}";
+
+    wp_remote_post("https://api.telegram.org/bot" . TORTINKA_TG_BOT_TOKEN . "/sendMessage", [
+        'timeout' => 10,
+        'body' => [
+            'chat_id' => TORTINKA_TG_CHAT_ID,
+            'text'    => $message,
+        ],
+    ]);
+}
+
+/* Фильтр для добавления атрибута imask в поле ввода номера телефона */
+add_filter('wpcf7_form_elements', function ($content) {
+    $content = preg_replace(
+        '/(<input[^>]*name="your-phone"[^>]*)(\/?>)/',
+        '$1 data-js-input-mask="(00) 000-00-00"$2',
+        $content
+    );
+    return $content;
+});
+
+/* wooCommerse */
+add_action('after_setup_theme', function () {
+    add_theme_support('woocommerce');
+});
+/* Переопределение "обёртки" контента страниц от wooCommerce под свою сетку */
+remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+
+add_action('woocommerce_before_main_content', function () {
+    echo '<main class="shop-page"><div class="container shop-page__inner">';
+}, 10);
+
+add_action('woocommerce_after_main_content', function () {
+    echo '</div></main>';
+}, 10);
+/* Двухколоночная сетка для блока товаров на странице shop */
+add_action('woocommerce_before_shop_loop', function () {
+    echo '<div class="shop-page__layout">';
+    echo '<aside class="shop-page__filters">';
+    if (is_active_sidebar('shop-filters')) {
+        dynamic_sidebar('shop-filters');
+    }
+    echo '</aside>';
+    echo '<div class="shop-page__products">';
+}, 5);
+
+add_action('woocommerce_after_shop_loop', function () {
+    echo '</div></div>';
+}, 100);
+
+/* Регистрация виджет-зоны для фильтров товаров */
+add_action('widgets_init', function () {
+    register_sidebar([
+        'name' => 'Фильтры каталога',
+        'id' => 'shop-filters',
+        'before_widget' => '<div class="shop-filter">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="shop-filter__title">',
+        'after_title' => '</h3>',
+    ]);
+});
+
+/* Отключаем дефолтный WooCommerce-сайдбар — у нас свои фильтры, а не встроенный sidebar.php темы */
+remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar');
 ?>
 
 <!--
@@ -298,4 +459,48 @@ function tortinka_preloader_hide_script() {
 Если же в проекте позже появится AJAX-навигация (Barba.js, вручную написанный роутинг через fetch) — это отдельная и существенно более сложная задача (нужно управлять появлением/скрытием прелоудера вручную при каждом AJAX-переходе, кэшировать состояние и т.д.), дай знать, если это актуально — разберём отдельно, в этот ответ такое не заложено.
 
 PS. Cloud
+-->
+
+<!-- 
+Не рабочая версия хука для отправки сообщения в  TG бот с изображением  
+add_action('wpcf7_before_send_mail', 'tortinka_send_to_telegram');
+
+function tortinka_send_to_telegram($contact_form) {
+    $submission = WPCF7_Submission::get_instance();
+    if (!$submission) return;
+
+    $data = $submission->get_posted_data();
+
+    $name  = sanitize_text_field($data['your-name'] ?? 'Не указано');
+    $phone = sanitize_text_field($data['your-phone'] ?? 'Не указан');
+    $note  = sanitize_textarea_field($data['your-note'] ?? '—');
+
+    $caption = "🎂 <b>Новая заявка с сайта tortInka</b>\n\n";
+    $caption .= "👤 <b>Имя:</b> {$name}\n";
+    $caption .= "📞 <b>Телефон:</b> {$phone}\n";
+    $caption .= "📝 <b>Пожелания:</b> {$note}";
+
+    $image_url = get_template_directory_uri() . '/assets/images/tg-message.png';
+
+    $response = wp_remote_post("https://api.telegram.org/bot" . TORTINKA_TG_BOT_TOKEN . "/sendPhoto", [
+        'timeout' => 15,
+        'body' => [
+            'chat_id'    => TORTINKA_TG_CHAT_ID,
+            'photo'      => $image_url, 
+            'caption'    => $caption,
+            'parse_mode' => 'HTML',
+        ],
+    ]);
+
+		if (is_wp_error($response)) {
+				error_log('Telegram sendPhoto NETWORK ERROR: ' . $response->get_error_message());
+		} else {
+				$code = wp_remote_retrieve_response_code($response);
+				$body = wp_remote_retrieve_body($response);
+				if ($code !== 200) {
+						error_log("Telegram sendPhoto API ERROR ({$code}): {$body}");
+				}
+		}
+}
+
 -->

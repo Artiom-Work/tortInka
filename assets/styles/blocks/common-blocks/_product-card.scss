@@ -1,0 +1,105 @@
+@use "../../healpers" as *;
+/* ==== Styles for product card ==== */
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  max-width: rem(300);
+  width: 100% !important;
+  padding: rem(10) rem(10) rem(15) !important;
+  border-radius: var(--border-radius-small);
+  text-align: center;
+  box-shadow: var(--box-shadow-dark);
+  justify-self: center;
+
+  &__image-wrapper {
+    border-radius: var(--border-radius-small);
+    overflow: hidden;
+    margin-bottom: rem(10);
+    box-shadow: var(--box-shadow-light);
+    width: 100%;
+    height: rem(280);
+
+    img {
+      width: inherit !important;
+      height: inherit !important;
+      object-fit: cover;
+    }
+  }
+
+  &__heading {
+    color: var(--color-accent);
+    font-weight: 700;
+    text-shadow: var(--accent-text-shadow);
+    margin-bottom: rem(15);
+  }
+
+  &__summary,
+  &__price {
+    line-height: 1;
+    margin-bottom: rem(10);
+    text-shadow: var(--accent-text-shadow-light);
+    color: var(--color-brown-dark);
+  }
+
+  &__summary {
+    @include fluid-text(18, 16);
+
+    font-weight: 400;
+  }
+
+  &__price {
+    @include fluid-text(22, 20);
+
+    display: block;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  &__button {
+    @include reset-button;
+    @include fluid-text(20, 16);
+
+    font-family: var(--font-family);
+    letter-spacing: 0.07em;
+    font-weight: 600;
+    background-image: var(--accent-grad) !important;
+    color: var(--color-gray-light);
+    text-shadow: var(--links-text-shadow);
+    will-change: transform;
+    box-shadow: var(--box-shadow-dark);
+    padding: rem(10) rem(20);
+    border-radius: var(--border-radius-medium);
+    margin-top: auto;
+    align-self: center;
+  }
+}
+
+@include laptop-media {
+  .product-card {
+    max-width: rem(345);
+    padding: rem(25) !important;
+  }
+}
+
+@include tablet-media {
+  .product-card {
+    max-width: rem(220);
+    padding: rem(10) rem(10) rem(15) !important;
+
+    &__image-wrapper {
+      box-shadow: var(--box-shadow-light);
+      height: rem(200);
+    }
+  }
+}
+
+@include mobile-medium-media {
+  .product-card {
+    max-width: rem(340);
+
+    &__image-wrapper {
+      height: rem(320);
+    }
+  }
+}
