@@ -48,6 +48,10 @@
   --box-shadow-light: 0 0 #{rem(12)} #{rem(-5)} var(--color-gray-light);
   --box-shadow-light-blur: 0 0 #{rem(22)} #{rem(-5)} var(--color-gray-light);
   --box-shadow-dark: 0 0 #{rem(12)} #{rem(-5)} var(--color-dark);
+  --box-shadow-dark-special-right: #{rem(15)} #{rem(8)} #{rem(6)} #{rem(-5)}
+    var(--color-dark);
+  --box-shadow-dark-special-left: #{rem(-15)} #{rem(8)} #{rem(6)} #{rem(-5)}
+    var(--color-dark);
   --box-shadow-dark-blur: 0 0 #{rem(22)} #{rem(-5)} var(--color-dark);
 
   --font-family: "Montserrat", sans-serif;
