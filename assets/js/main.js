@@ -81,10 +81,33 @@ function switchModal(currentDialog, targetModalId) {
 
 function fakeSubmitRequest(form) {
 	return new Promise((resolve) => {
-		setTimeout(() => resolve({ ok: true }), 8000);
+		setTimeout(() => resolve({ ok: true }), 80000);
 	});
 }
 /* Код для формы с плагином CF-7 */
+// document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
+//   trigger.addEventListener('click', () => {
+//     const modal = document.getElementById(trigger.dataset.openModal);
+//     if (!modal) return;
+
+//     const nameField = modal.querySelector('[name="product-name"]');
+//     if (nameField) {
+//       nameField.value = trigger.dataset.productName || '';
+//     }
+
+//     const quantityField = modal.querySelector('[name="product-quantity"]');
+//     if (quantityField) {
+//       // На странице товара кнопка лежит внутри <form class="cart"> рядом со счётчиком
+//       const cartForm = trigger.closest('form.cart');
+//       const qtyInput = cartForm ? cartForm.querySelector('input[name="quantity"]') : null;
+//       // В каталоге (карточка без счётчика) — по умолчанию 1
+//       quantityField.value = qtyInput ? qtyInput.value : '1';
+//     }
+
+//     modal.showModal();
+//   });
+// });
+
 // document.addEventListener('wpcf7beforesubmit', (e) => {
 //   const form = e.target; // сама форма, на которой сработало событие
 //   const button = form.querySelector('button[type="submit"], input[type="submit"]');
@@ -97,7 +120,7 @@ function fakeSubmitRequest(form) {
 // document.addEventListener('wpcf7mailsent', (e) => {
 //   const form = e.target;
 //   const parentDialog = form.closest('dialog');
-
+//   finishSubmit(form);
 //   switchModal(parentDialog, form.dataset.successModal);
 // });
 

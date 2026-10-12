@@ -2,19 +2,21 @@
 
 /* ==== Block callback-oreder(dialog-content) ==== */
 .callback-order {
+  --calbackOrderSectionHeight: #{rem(700)};
+
   @include flex-center;
 
   max-width: fluid(550, 300);
   width: 100%;
   gap: fluid(24, 10);
   color: var(--color-dark);
-
+  height: var(--calbackOrderSectionHeight);
   padding: rem(20);
   border-radius: var(--border-radius-medium);
 
   &__image {
     width: 100%;
-    min-height: rem(700);
+    height: var(--calbackOrderSectionHeight);
     object-fit: cover;
     border-radius: inherit;
 
@@ -42,16 +44,29 @@
 
 @include tablet-media {
   .callback-order {
+    --calbackOrderSectionHeight: #{rem(550)};
+
     flex-direction: column-reverse;
     text-align: center;
-    &__image {
-      min-height: rem(450);
+  }
+}
+
+@include mobile-media {
+  .callback-order {
+    --calbackOrderSectionHeight: #{rem(480)};
+
+    &__image-wrapper {
+      border-radius: var(--border-radius);
     }
   }
 }
 
 @include mobile-s-media {
   .callback-order {
+    &__image-wrapper {
+      border-radius: var(--border-radius-medium);
+    }
+
     &__action {
       padding-top: rem(20);
     }

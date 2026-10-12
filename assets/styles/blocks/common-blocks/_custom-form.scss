@@ -51,8 +51,9 @@
   }
 
   &__button {
-    display: inline-flex;
-    justify-self: center;
+    width: max-content;
+    margin-inline: auto;
+    box-shadow: var(--box-shadow-dark-blur);
   }
 }
 
@@ -73,8 +74,17 @@
       padding: rem(5);
       line-height: 1.2;
     }
+
     &__button {
       padding-block: rem(10);
+    }
+  }
+}
+
+@include mobile-media {
+  .custom-form {
+    textarea {
+      height: rem(100);
     }
   }
 }

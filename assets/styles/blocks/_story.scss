@@ -20,16 +20,16 @@
   }
 
   &__list {
-    li:nth-child(even) .story__text {
+    li:nth-child(even) .story__chapter .story__text {
       text-align: end;
     }
 
-    li:nth-child(even) .story__image-wrapper {
+    li:nth-child(even) .story__chapter .story__image {
       box-shadow: var(--box-shadow-dark-special-left);
       float: left;
     }
 
-    li:nth-child(odd) .story__image-wrapper {
+    li:nth-child(odd) .story__chapter .story__image {
       box-shadow: var(--box-shadow-dark-special-right);
       float: right;
     }
@@ -61,7 +61,7 @@
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
-      height: rem(3.5);
+      height: rem(3);
       background: linear-gradient(
         to right,
         transparent,
@@ -72,10 +72,15 @@
   }
 
   &__image {
-    &-wrapper {
-      align-self: center;
-      border-radius: var(--border-radius);
-      overflow: hidden;
+    align-self: center;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+
+    img {
+      width: 100% !important;
+      height: 100%;
+      object-fit: contain !important;
+      margin: 0;
     }
   }
 
@@ -92,20 +97,16 @@
 @include tablet-media-above {
   .story {
     &__list {
-      li:nth-child(even) .story__text {
+      li:nth-child(even) .story__chapter .story__text {
         margin-left: rem(-50);
         text-align: end;
       }
 
-      li:nth-child(even) .story__image-wrapper {
-        box-shadow: var(--box-shadow-dark-special-left);
-      }
-
-      li:nth-child(odd) .story__text {
+      li:nth-child(odd) .story__chapter .story__text {
         margin-right: rem(-50);
       }
-      li:nth-child(odd) .story__image-wrapper {
-        box-shadow: var(--box-shadow-dark-special-right);
+
+      li:nth-child(odd) .story__chapter .story__image {
         order: 2;
       }
     }
@@ -118,23 +119,22 @@
 }
 @include tablet-media {
   .story {
-    &__image-wrapper {
+    &__image {
       margin-bottom: rem(10);
     }
   }
 }
 @include mobile-media {
   .story {
-    &__image-wrapper {
-      max-width: 60%;
-      margin-bottom: rem(50);
+    &__image {
+      width: 60%;
     }
   }
 }
 @include mobile-medium-media {
   .story {
-    &__image-wrapper {
-      max-width: 40%;
+    &__image {
+      width: 40%;
       border-radius: var(--border-radius-small);
     }
   }

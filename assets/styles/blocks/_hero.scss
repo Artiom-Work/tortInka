@@ -34,6 +34,7 @@
       padding-block: rem(150) rem(50);
     }
   }
+
   &__body {
     position: relative;
     z-index: 3;
@@ -118,7 +119,12 @@
     width: fluid(345, 287);
     height: fluid(300, 250);
     bottom: fluid(300, 250);
-    object-fit: cover;
+
+    img {
+      width: inherit;
+      height: inherit;
+      object-fit: cover;
+    }
 
     &--about-page {
       top: 0;
@@ -137,6 +143,12 @@
 }
 @include mobile-media {
   .hero {
+    &-shop {
+      .parallax-bg--main {
+        background-position: top 0 left 90% !important;
+      }
+    }
+
     &__title {
       line-height: 1.5;
 

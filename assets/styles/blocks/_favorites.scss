@@ -55,19 +55,20 @@
     }
 
     &-summary {
-      @include fluid-text(18, 16);
-
+      font-size: ren(18);
       line-height: 1;
       font-weight: 400;
       margin-bottom: rem(10);
       color: var(--color-dark);
+      text-shadow: var(--accent-text-shadow-light);
     }
 
     &-price {
       @include fluid-text(22, 20);
 
       display: inline-block;
-      color: var(--color-dark);
+      color: var(--color-accent-third);
+      text-shadow: var(--accent-text-shadow-light);
       font-weight: 700;
       letter-spacing: 0.03em;
       line-height: 1;

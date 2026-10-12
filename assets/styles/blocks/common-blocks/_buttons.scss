@@ -82,3 +82,39 @@
     filter: brightness(60%);
   }
 }
+
+/* ===Fix woocomerce styles */
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles))
+  #respond
+  input#submit:hover,
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles))
+  a.button:hover,
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles))
+  button.button:hover,
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles))
+  input.button:hover,
+:where(body:not(.woocommerce-block-theme-has-button-styles)):where(
+    :not(.edit-post-visual-editor)
+  )
+  .woocommerce
+  #respond
+  input#submit:hover,
+:where(body:not(.woocommerce-block-theme-has-button-styles)):where(
+    :not(.edit-post-visual-editor)
+  )
+  .woocommerce
+  a.button:hover,
+:where(body:not(.woocommerce-block-theme-has-button-styles)):where(
+    :not(.edit-post-visual-editor)
+  )
+  .woocommerce
+  button.button:hover,
+:where(body:not(.woocommerce-block-theme-has-button-styles)):where(
+    :not(.edit-post-visual-editor)
+  )
+  .woocommerce
+  input.button:hover {
+  background-color: var(--accent-grad);
+  background-image: var(--accent-grad);
+  color: var(--color-gray-light);
+}

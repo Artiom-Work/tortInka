@@ -1,5 +1,9 @@
 @use "../healpers" as *;
 /* ==== Section contacts ==== */
+#contacts-title {
+  scroll-margin-top: var(--header-height);
+}
+
 .contacts {
   position: relative;
   overflow: clip;
@@ -47,7 +51,7 @@
     max-width: rem(1000);
     margin-bottom: rem(30);
     text-align: center;
-    color: var(--color-gray-light);
+    color: var(--color-gray-medium);
     letter-spacing: 0.03em;
     text-shadow: var(--accent-text-shadow-medium);
   }
@@ -113,15 +117,19 @@
     gap: rem(10);
     margin-top: rem(-100);
   }
-}
 
-.contacts__action {
-  justify-self: center;
-  box-shadow: var(--box-shadow-dark-blur);
+  &__action {
+    &.callback-order {
+      --calbackOrderSectionHeight: auto;
+    }
 
-  label {
-    color: var(--color-gray-light);
-    text-shadow: var(--accent-text-shadow-medium);
+    justify-self: center;
+    box-shadow: var(--box-shadow-dark-blur);
+
+    label {
+      color: var(--color-gray-light);
+      text-shadow: var(--accent-text-shadow-medium);
+    }
   }
 }
 
