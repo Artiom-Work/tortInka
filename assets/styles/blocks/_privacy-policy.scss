@@ -1,0 +1,113 @@
+@use "../healpers" as *;
+@use "../base/utils" as *;
+
+/* === Styles from privacy-policy page elements === */
+body.privacy-policy {
+  main {
+    padding-block: calc(var(--header-height) + #{fluid(80, 40)}) fluid(80, 40);
+  }
+}
+
+.privacy-policy {
+  &__section {
+    @extend .coffee-bg;
+    @extend .container;
+
+    padding-block: fluid(40, 20);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-light-blur);
+  }
+
+  &__text {
+    position: relative;
+    margin-bottom: fluid(60, 30);
+    text-shadow: var(--accent-text-shadow);
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: fluid(-30, -20);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: rem(2.5);
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--color-brown-dark),
+        transparent
+      );
+    }
+
+    ul {
+      list-style: disc;
+      padding-left: rem(20);
+    }
+  }
+
+  h2,
+  h3,
+  h4 {
+    text-align: center;
+    font-family: var(--font-family);
+    text-shadow: var(--accent-text-shadow);
+  }
+
+  h2 {
+    color: var(--color-accent);
+    text-shadow: var(--accent-text-shadow);
+    margin-bottom: fluid(40, 20);
+
+    + .privacy-policy__text {
+      text-align: center;
+      font-weight: 700;
+
+      time {
+        color: var(--color-accent);
+      }
+    }
+  }
+
+  h3 {
+    color: var(--color-accent-secondary);
+    margin-bottom: rem(20);
+  }
+
+  p a {
+    position: relative;
+    color: var(--color-accent);
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      translate: -50%;
+      width: 0;
+      height: rem(1);
+      background-color: currentColor;
+      transition-duration: inherit;
+      box-shadow: var(--accent-text-shadow);
+    }
+
+    @include hover {
+      &::after {
+        width: 100%;
+      }
+    }
+
+    @include speciall-active {
+      scale: 0.98;
+      filter: brightness(80%);
+    }
+  }
+}
+
+@include mobile-medium-media {
+  .privacy-policy {
+    h2 {
+      font-size: rem(22);
+    }
+  }
+}
+/* ================================================ */

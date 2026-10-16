@@ -235,7 +235,7 @@ svg * {
 /* ==== END  Variables  ==== */
 /* ========================= */
 /* ==== Utils selectors ==== */
-.container {
+.container, .privacy-policy__section {
   max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
   width: 100%;
   margin-inline: auto;
@@ -324,7 +324,7 @@ svg * {
 }
 
 /* Custom tortInka's backgrounds */
-.coffee-bg, .product-single__summary, .woocommerce-tabs.wc-tabs-wrapper .tabs.wc-tabs li, .woocommerce-tabs.wc-tabs-wrapper .woocommerce-Tabs-panel .form-submit .submit {
+.coffee-bg, .product-single__summary, .woocommerce-tabs.wc-tabs-wrapper .tabs.wc-tabs li, .woocommerce-tabs.wc-tabs-wrapper .woocommerce-Tabs-panel .form-submit .submit, .privacy-policy__section, body.privacy-policy main::after {
   background: radial-gradient(ellipse at 82% 42%, #9b7954 0%, rgba(226, 182, 135, 0) 55%), radial-gradient(ellipse at 3% 3%, #2b1603 0%, rgba(43, 22, 3, 0) 45%), radial-gradient(ellipse at 8% 60%, #663806 0%, rgba(102, 56, 6, 0) 50%), linear-gradient(135deg, #3a2004 0%, #8d5816 45%, #b58243 65%, #a4825e 85%, #9b6529 100%) !important;
   background-color: #663806;
 }
@@ -383,7 +383,20 @@ body:has(#menu-switch:checked) .hero__body {
 body:has(dialog:modal) {
   overflow: hidden;
 }
-
+body:has(h2[id=error-block-title]) main, body:has(h2[id=privary-policy-title]) main, body.privacy-policy main {
+  position: relative;
+}
+body:has(h2[id=error-block-title]) main::after, body:has(h2[id=privary-policy-title]) main::after, body.privacy-policy main::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: var(--header-height);
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background: radial-gradient(ellipse at 70% 30%, var(--color-red) 0%, color-mix(in srgb, var(--color-red), transparent 80%) 60%), radial-gradient(ellipse at 20% 80%, var(--color-rose) 0%, color-mix(in srgb, var(--color-rose), transparent 70%) 55%), radial-gradient(ellipse at 90% 90%, var(--color-brown-dark) 0%, color-mix(in srgb, var(--color-brown-dark), transparent 50%) 50%), linear-gradient(135deg, var(--color-dark) 0%, var(--color-brown-dark) 35%, var(--color-red) 70%, var(--color-rose) 100%);
+  background-color: var(--color-dark);
+}
 main {
   flex-grow: 1;
   margin-top: calc(var(--header-height) * -1);
@@ -2506,21 +2519,6 @@ button[aria-label]::before {
 /* ==== END  Block callback-oreder ==== */
 /* ==================================== */
 /* === 404 page styles === */
-body:has(h2[id=error-block-title]) main {
-  position: relative;
-}
-body:has(h2[id=error-block-title]) main::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: var(--header-height);
-  left: 0;
-  top: 0;
-  z-index: 2;
-  background: radial-gradient(ellipse at 70% 30%, var(--color-red) 0%, color-mix(in srgb, var(--color-red), transparent 80%) 60%), radial-gradient(ellipse at 20% 80%, var(--color-rose) 0%, color-mix(in srgb, var(--color-rose), transparent 70%) 55%), radial-gradient(ellipse at 90% 90%, var(--color-brown-dark) 0%, color-mix(in srgb, var(--color-brown-dark), transparent 50%) 50%), linear-gradient(135deg, var(--color-dark) 0%, var(--color-brown-dark) 35%, var(--color-red) 70%, var(--color-rose) 100%);
-  background-color: var(--color-dark);
-}
-
 .error-block {
   padding-block: calc(var(--header-height) + clamp(1.25rem, 0.8098591549rem + 1.8779342723vw, 2.5rem));
 }
@@ -2537,6 +2535,95 @@ body:has(h2[id=error-block-title]) main::after {
 }
 
 /* === 404 page === */
+/* === Styles from privacy-policy page elements === */
+body.privacy-policy main {
+  padding-block: calc(var(--header-height) + clamp(2.5rem, 1.6197183099rem + 3.7558685446vw, 5rem)) clamp(2.5rem, 1.6197183099rem + 3.7558685446vw, 5rem);
+}
+
+.privacy-policy__section {
+  padding-block: clamp(1.25rem, 0.8098591549rem + 1.8779342723vw, 2.5rem);
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--box-shadow-light-blur);
+}
+.privacy-policy__text {
+  position: relative;
+  margin-bottom: clamp(1.875rem, 1.2147887324rem + 2.8169014085vw, 3.75rem);
+  text-shadow: var(--accent-text-shadow);
+}
+.privacy-policy__text::after {
+  content: "";
+  position: absolute;
+  bottom: clamp(-1.25rem, -1.0299295775rem + -0.9389671362vw, -1.875rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 0.15625rem;
+  background: linear-gradient(to right, transparent, var(--color-brown-dark), transparent);
+}
+.privacy-policy__text ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+.privacy-policy h2,
+.privacy-policy h3,
+.privacy-policy h4 {
+  text-align: center;
+  font-family: var(--font-family);
+  text-shadow: var(--accent-text-shadow);
+}
+.privacy-policy h2 {
+  color: var(--color-accent);
+  text-shadow: var(--accent-text-shadow);
+  margin-bottom: clamp(1.25rem, 0.8098591549rem + 1.8779342723vw, 2.5rem);
+}
+.privacy-policy h2 + .privacy-policy__text {
+  text-align: center;
+  font-weight: 700;
+}
+.privacy-policy h2 + .privacy-policy__text time {
+  color: var(--color-accent);
+}
+.privacy-policy h3 {
+  color: var(--color-accent-secondary);
+  margin-bottom: 1.25rem;
+}
+.privacy-policy p a {
+  position: relative;
+  color: var(--color-accent);
+}
+.privacy-policy p a::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  translate: -50%;
+  width: 0;
+  height: 0.0625rem;
+  background-color: currentColor;
+  transition-duration: inherit;
+  box-shadow: var(--accent-text-shadow);
+}
+@media (any-hover: hover) {
+  .privacy-policy p a:hover::after {
+    width: 100%;
+  }
+}
+@media (any-hover: hover) and (any-hover: none) {
+  .privacy-policy p a:active::after {
+    width: 100%;
+  }
+}
+.privacy-policy p a:active {
+  scale: 0.98;
+  filter: brightness(80%);
+}
+
+@media (width <= 35.93625rem) {
+  .privacy-policy h2 {
+    font-size: 1.375rem;
+  }
+}
+/* ================================================ */
 /* ********************************************************************** */
 /* ****** Additional styles for WordPress, wooCommerce and other ...***** */
 /* ********************************************************************** */

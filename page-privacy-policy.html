@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="icon" type="image/svg+xml" sizes="16x16" href="./assets/images/icons/favicon.svg">
+	<link rel="icon" type="image/svg+xml" sizes="32x32" href="./assets/images/icons/favicon.svg">
+	<link rel="icon" type="image/svg+xml" sizes="48x48" href="./assets/images/icons/favicon.svg">
+	<link rel="apple-touch-icon" sizes="180x180" href="./assets/images/icons/favicon.svg">
+	<meta name="description"
+		content="🍰 Рукотворные шедевры для ваших праздников. Инна Чаплина — кондитер с душой в Гомеле. Свежие продукты, индивидуальный подход, любовь в каждой детали. Попробуйте счастье на вкус! ❤️">
+	<title>tort1nka | Политика конфеденциальности</title>
+
+	<style id="preloader-critical-css">
+		/* ===  Preloader styles === */
+		html.is-loading,
+		html.is-loading body {
+			overflow: hidden;
+			height: 100%;
+		}
+
+		.preloader {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			z-index: 10;
+			width: 100%;
+			height: 100vh;
+			background-color: #0e0c0c;
+			opacity: 1;
+			transition-duration: 1s;
+		}
+
+		.preloader.is-hidden {
+			animation: hide-preloader 1.5s ease-out;
+		}
+
+		.preloader__backdrop {
+			position: absolute;
+			overflow: hidden;
+			width: 100%;
+			height: 100%;
+			left: 50%;
+			top: 50%;
+			translate: -50% -50%;
+			border-radius: 50%;
+			background: radial-gradient(circle, rgba(116, 6, 47, 0.75) 0%, rgba(116, 6, 47, 0.01) 30%, transparent 100%);
+			filter: blur(30px);
+			pointer-events: none;
+		}
+
+		.preloader-block {
+			position: relative;
+			display: inline-block;
+		}
+
+		.preloader-block[aria-busy=true] span {
+			visibility: hidden;
+		}
+
+		.preloader-block--xs .loader--sm {
+			width: 2.375rem;
+			height: 1.875rem;
+		}
+
+		.preloader-block--xs .loader__trace-svg--sm {
+			top: -0.125rem;
+		}
+
+		.loader {
+			position: relative;
+			display: inline-flex;
+		}
+
+		.loader--full {
+			background-color: transparent;
+			width: 16.25rem;
+			height: 14.5625rem;
+		}
+
+		.loader--sm {
+			width: 3.5rem;
+			height: 3.125rem;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.loader__art {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+
+		.loader__trace {
+			fill: none;
+			stroke-linecap: round;
+			stroke-dasharray: 0.0001 1;
+			stroke-dashoffset: 1;
+			animation: loader-trace 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+		}
+
+		.loader__trace-svg {
+			position: absolute;
+			top: -1.25rem !important;
+			left: 0.25rem;
+			right: -0.25rem;
+			bottom: 0;
+			width: 100%;
+			height: 130%;
+			overflow: visible;
+			pointer-events: none;
+		}
+
+		.loader__trace-svg--sm {
+			top: -0.3125rem !important;
+			left: 0;
+		}
+
+		.loader__trace--halo {
+			stroke-width: 30;
+			filter: blur(0.4375rem);
+			opacity: 0.5;
+		}
+
+		.loader__trace--core {
+			stroke-width: 6;
+			filter: blur(0.0625rem) drop-shadow(0 0 0.375rem rgba(255, 255, 255, 0.9));
+			opacity: 1;
+		}
+
+		.loader__sheen {
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			mix-blend-mode: overlay;
+			mask-image: url("./assets/images/preloader/logo-tortInka-dark-pink.svg");
+			mask-repeat: no-repeat;
+			mask-position: center;
+			mask-size: contain;
+			-webkit-mask-image: url("./assets/images/preloader/logo-tortInka-dark-pink.svg");
+			-webkit-mask-repeat: no-repeat;
+			-webkit-mask-position: center;
+			-webkit-mask-size: contain;
+			background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%);
+			background-size: 40% 100%;
+			background-repeat: no-repeat;
+			background-position: -40% 0;
+			animation: loader-sheen 2.8s ease-in infinite;
+		}
+
+		@keyframes loader-trace {
+			0% {
+				stroke-dashoffset: 1;
+				opacity: 0.5;
+			}
+
+			15% {
+				opacity: 1;
+			}
+
+			35% {
+				opacity: 0.5;
+			}
+
+			60% {
+				opacity: 1;
+			}
+
+			85% {
+				opacity: 0.6;
+			}
+
+			100% {
+				stroke-dashoffset: 0;
+				opacity: 1;
+			}
+		}
+
+		@keyframes loader-sheen {
+			0% {
+				background-position: -40% 0;
+			}
+
+			22% {
+				background-position: 140% 0;
+			}
+
+			100% {
+				background-position: 140% 0;
+			}
+		}
+
+		@keyframes hide-preloader {
+			0% {
+				opacity: 1;
+			}
+
+			99% {
+				opacity: 0;
+			}
+
+			100% {
+				display: none;
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+
+			.loader__trace,
+			.loader__halo,
+			.loader__core,
+			.loader__sheen {
+				animation: none;
+			}
+		}
+	</style>
+
+	<script>document.documentElement.classList.add('is-loading');</script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			var preloader = document.querySelector('[data-preloader]');
+			if (!preloader) {
+				// Прелоудера нет на странице — сразу сообщаем остальным скриптам,
+				// что "загрузка завершена", чтобы welcome-блок не ждал вечно
+				document.dispatchEvent(new CustomEvent('preloader:hidden'));
+				return;
+			}
+
+			function hide() {
+				preloader.classList.add('is-hidden');
+				document.documentElement.classList.remove('is-loading');
+				document.dispatchEvent(new CustomEvent('preloader:hidden'));
+				setTimeout(function () {
+					preloader.remove();
+				}, 400);
+			}
+
+			window.addEventListener('load', hide);
+			setTimeout(hide, 8000);
+		});
+	</script>
+
+	<script src="./assets/libs/imask/imask7-6-1.min.js" defer></script>
+
+	<link rel="stylesheet" href="./assets//styles/style.css">
+</head>
+
+<body class="privacy-policy">
+	<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+		<defs>
+			<linearGradient id="logo-sheen-gradient" x1="0" y1="0" x2="1" y2="0">
+				<stop offset="0" stop-color="#fff" stop-opacity="0" />
+				<stop offset="0.5" stop-color="#fff" stop-opacity="0.9" />
+				<stop offset="1" stop-color="#fff" stop-opacity="0" />
+			</linearGradient>
+
+			<linearGradient id="logo-trace-gradient" x1="0" y1="0" x2="0" y2="1">
+				<stop offset="0" stop-color="#fff" stop-opacity="0" />
+				<stop offset="0.5" stop-color="#fff" stop-opacity="1" />
+				<stop offset="1" stop-color="#fff" stop-opacity="0" />
+			</linearGradient>
+		</defs>
+	</svg>
+
+	<div class="preloader" data-preloader>
+		<div class="preloader__backdrop"></div>
+
+		<div class="loader loader--full">
+			<img class="loader__art" src="./assets/images/preloader/logo-tortInka-dark-pink.svg" width="250" height="197"
+				alt="" aria-hidden="true">
+
+			<svg class="loader__trace-svg" viewBox="0 0 259 233" aria-hidden="true">
+				<path class="loader__trace loader__trace--halo"
+					d="M244.569 27.9018C278.632 94.7141 126.186 204.5 125.351 204.5C124.515 204.5 -23.9806 112.188 3.35934 35.7863C30.6992 -40.6154 122.713 35.2501 122.22 35.2508C121.728 35.2515 210.507 -38.9105 244.569 27.9018Z"
+					pathLength="1" fill="none" stroke="#fff"></path>
+
+				<path class="loader__trace loader__trace--core"
+					d="M244.569 27.9018C278.632 94.7141 126.186 204.5 125.351 204.5C124.515 204.5 -23.9806 112.188 3.35934 35.7863C30.6992 -40.6154 122.713 35.2501 122.22 35.2508C121.728 35.2515 210.507 -38.9105 244.569 27.9018Z"
+					pathLength="1" fill="none" stroke="#fff"></path>
+			</svg>
+
+			<div class="loader__sheen"></div>
+		</div>
+	</div>
+
+	<header class="header">
+		<div class="container">
+			<a class="header__logo logo" href="index.html">
+				<img class="logo__image" src="assets/images/logo.svg" width="95" height="75" alt="Логотип tirtInka">
+			</a>
+
+			<nav class="header__nav nav hidden-mobile">
+				<ul class="nav__list">
+					<li>
+						<a href="index.html">Домой</a>
+					</li>
+
+					<li>
+						<a href="https://tortinka.artiom-mezheynikov.ru/shop/">Музей вкусов</a>
+					</li>
+
+					<li>
+						<a href="index.html#contacts-title">Контакты</a>
+					</li>
+
+					<li>
+						<a href="page-about-me.html">Обо мне</a>
+					</li>
+				</ul>
+			</nav>
+
+			<div class="mobile-menu visible-mobile">
+				<input id="menu-switch" type="checkbox">
+				<label class="mobile-menu__burger" for="menu-switch">
+					<svg class="mobile-menu__burger-open" width="36" height="36">
+						<use xlink:href="./assets/images/icons/sprite-icons.svg#cake-button">
+						</use>
+					</svg>
+
+					<svg class="mobile-menu__burger-close" width="44" height="44">
+						<use xlink:href="./assets/images/icons/sprite-icons.svg#close-circle-icon">
+						</use>
+					</svg>
+				</label>
+
+				<div class="mobile-menu__wrapper">
+					<nav class="mobile-menu__box"
+						style="background:linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./assets/images/slogan/maid-with-love-text-rotate.webp) no-repeat right bottom / 250px 300px;">
+						<ul class="nav__list">
+							<li>
+								<a href="index.html">Домой</a>
+							</li>
+
+							<li>
+								<a href="https://tortinka.artiom-mezheynikov.ru/shop/">Музей вкусов</a>
+							</li>
+
+							<li>
+								<a href="index.html#contacts-title">Контакты</a>
+							</li>
+
+							<li>
+								<a href="page-about-me.html">Обо мне</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+
+			<ul class="header__soc1als visible-mobile">
+				<li>
+					<a href="viber://chat?number=%2B375297869845" aria-label="social-icon" target="_blank">
+						<img src="./assets/images/icons/viber-icon.svg" width="36" height="36" alt="" aria-hidden="true">
+					</a>
+				</li>
+
+				<li>
+					<a href="instagram://user?username=inna_3179" aria-label="social-icon" target="_blank">
+						<img src="./assets/images/icons/inst-icon.svg" width="36" height="36" alt="" aria-hidden="true">
+					</a>
+				</li>
+
+				<li>
+					<a href="https://t.me/+375297869845" aria-label="social-icon" target="_blank">
+						<img src="./assets/images/icons/telegram-icon.svg" width="36" height="36" alt="" aria-hidden="true">
+					</a>
+				</li>
+			</ul>
+		</div>
+	</header>
+
+	<main>
+		<h1 class="visually-hidden">Политика конфиденциальности сайта tortInka</h1>
+
+		<section class="privacy-policy__section" aria-labelledby="privacy-policy-title">
+			<div class="container">
+				<h2 class="h3" id="privacy-policy-title">
+					Политика в&nbsp;отношении обработки персональных данных
+				</h2>
+
+				<div class="privacy-policy__text">
+					<p>Редакция от&nbsp;<time datetime="2026-10-14">14.10.2026</time></p>
+				</div>
+
+				<h3 class="h4">1. Общие положения</h3>
+
+				<div class="privacy-policy__text">
+
+					<p>
+						Настоящая политика определяет порядок обработки персональных данных и&nbsp;меры по&nbsp;обеспечению их
+						безопасности на&nbsp;сайте
+						<a href="https://tortinka.artiom-mezheynikov.ru">
+							https://tortinka.artiom-mezheynikov.ru
+						</a>.
+						Она разработана в&nbsp;соответствии с&nbsp;Законом Республики Беларусь
+						от&nbsp;7&nbsp;мая 2021&nbsp;г. №&nbsp;99-З &laquo;О&nbsp;защите персональных данных&raquo;
+					</p>
+
+					<p>
+						Оператор персональных данных: [ФИО физического или индивидуального предпринимателя / наименование
+						организации],
+						УНП&nbsp;[УНП, если есть], адрес: [почтовый адрес], электронная почта: <a href="mailto:email@email.com"
+							target="_blank" rel="noopener noreferrer">email@email.com</a>
+					</p>
+
+					<p>
+						Согласие на&nbsp;обработку данных, которые вы&nbsp;передаёте через формы на&nbsp;Сайте, вы&nbsp;выражаете,
+						отметив соответствующее поле перед отправкой формы.
+					</p>
+				</div>
+
+				<h3 class="h4">2. Какие данные мы&nbsp;обрабатываем</h3>
+
+				<div class="privacy-policy__text">
+					<p>Данные, которые вы&nbsp;указываете сами:</p>
+
+					<ul>
+						<li>
+							В&nbsp;форме обратной связи: номер телефона, [имя&nbsp;&mdash; если в&nbsp;форме есть такое поле],
+							название торта или текст сообщения;
+						</li>
+
+						<li>
+							В&nbsp;форме отзыва о&nbsp;товаре: имя, адрес электронной почты и&nbsp;текст отзыва;
+						</li>
+
+						<li>
+							При звонке или переписке в&nbsp;мессенджерах (Telegram, Viber, Instagram): то, что вы&nbsp;сами сообщаете
+							для согласования заказа, например имя, номер телефона, адрес доставки.
+						</li>
+					</ul>
+
+					<p>
+						Имя и&nbsp;текст отзыва публикуются на&nbsp;странице товара и&nbsp;доступны всем посетителям Сайта. Адрес
+						электронной почты не&nbsp;публикуется.
+					</p>
+
+					<p>
+						Данные, которые передаются автоматически: IP-адрес, тип браузера и&nbsp;устройства, дата и&nbsp;время
+						посещения, просмотренные страницы, данные файлов cookie (см. раздел&nbsp;7). При отправке отзыва IP-адрес
+						и&nbsp;данные браузера также сохраняются для защиты от&nbsp;спама.
+					</p>
+
+					<p>
+						Мы&nbsp;не&nbsp;запрашиваем специальные категории персональных данных. Если вы&nbsp;сами сообщаете сведения,
+						важные для безопасного выполнения заказа (например, об&nbsp;аллергии), они используются только для этой
+						цели.
+					</p>
+				</div>
+
+				<h3 class="h4">3. Цели обработки</h3>
+
+				<div class="privacy-policy__text">
+					<ul>
+						<li>
+							Cвязь с&nbsp;вами по&nbsp;вашей заявке и&nbsp;согласование заказа, включая доставку;
+						</li>
+
+						<li>
+							Выполнение заказа;
+						</li>
+
+						<li>
+							Ответы на&nbsp;ваши обращения и&nbsp;вопросы;
+						</li>
+
+						<li>
+							Публикация ваших отзывов о&nbsp;товарах на&nbsp;Сайте;
+						</li>
+
+						<li>
+							Защита сайта от&nbsp;спама и&nbsp;обеспечение его работы;
+						</li>
+					</ul>
+				</div>
+
+				<h3 class="h4">4. Правовые основания обработки</h3>
+
+				<div class="privacy-policy__text">
+					<p>
+						Мы&nbsp;обрабатываем персональные данные на&nbsp;основании вашего согласия, а&nbsp;также в&nbsp;случаях,
+						когда
+						обработка необходима для заключения и&nbsp;исполнения договора, стороной которого вы&nbsp;являетесь
+						(например, заказа), и&nbsp;в&nbsp;иных случаях, предусмотренных законодательством Республики Беларусь.
+					</p>
+				</div>
+
+				<h3 class="h4">5. Срок хранения</h3>
+
+				<div class="privacy-policy__text">
+					<p>
+						Данные хранятся не&nbsp;дольше, чем этого требуют цели обработки. Заявки и&nbsp;переписка
+						по&nbsp;заказу&nbsp;&mdash;
+						в&nbsp;течение срока согласования и&nbsp;выполнения заказа и&nbsp;[срок, например 6&nbsp;месяцев] после
+						его завершения. Отзывы&nbsp;&mdash; пока они размещены на&nbsp;Сайте; вы&nbsp;можете потребовать удалить
+						свой отзыв. По&nbsp;достижении целей обработки данные удаляются или обезличиваются, если иное
+						не&nbsp;требуется законодательством.
+					</p>
+				</div>
+
+				<h3 class="h4">6. Передача данных третьим лицам</h3>
+
+				<div class="privacy-policy__text">
+					<p>Мы&nbsp;не&nbsp;продаём ваши данные. Передача возможна только в&nbsp;объёме, необходимом для работы сайта
+						и&nbsp;выполнения заказа:</p>
+
+					<ul>
+						<li>
+							Xостинг-провайдеру, на&nbsp;серверах которого размещён сайт.
+						</li>
+
+						<li>
+							Mессенджерам и&nbsp;сервисам связи (Telegram, Viber, Instagram)&nbsp;&mdash; только если вы&nbsp;сами
+							пишете
+							нам через них; их&nbsp;правила обработки данных устанавливают сами сервисы.
+						</li>
+
+						<li>
+							Государственным органам&nbsp;&mdash; в&nbsp;случаях и&nbsp;порядке, предусмотренных законодательством.
+						</li>
+					</ul>
+
+					<p>
+						Если сервисы, которыми мы&nbsp;пользуемся, находятся за&nbsp;пределами Республики Беларусь, передача данных
+						осуществляется с&nbsp;соблюдением требований закона.
+					</p>
+				</div>
+
+				<h3 class="h4">7. Файлы cookie</h3>
+
+				<div class="privacy-policy__text">
+					<p>
+						Cookie&nbsp;&mdash; это небольшие текстовые файлы, которые сохраняются в&nbsp;вашем браузере при посещении
+						Сайта. На&nbsp;Сайте используются:
+					</p>
+
+					<ul>
+						<li>
+							Сookie формы отзыва&nbsp;&mdash; если вы&nbsp;отметите в&nbsp;форме отзыва галочку
+							&laquo;Сохранить моё имя, email и&nbsp;адрес сайта в&nbsp;этом браузере для последующих моих
+							комментариев&raquo;,
+							ваши имя и&nbsp;адрес электронной почты сохранятся в&nbsp;браузере (cookie comment_author_*
+							и&nbsp;comment_author_email_*) на&nbsp;срок до&nbsp;одного года, чтобы не&nbsp;вводить
+							их&nbsp;повторно.
+							Эти cookie устанавливаются только по&nbsp;вашему выбору.
+						</li>
+					</ul>
+
+					<p>
+						Другие cookie, включая аналитические и&nbsp;рекламные, Сайт не&nbsp;устанавливает.
+					</p>
+
+					<p>
+						Вы&nbsp;можете в&nbsp;любое время удалить или заблокировать cookie в&nbsp;настройках своего браузера.
+					</p>
+				</div>
+
+				<h3 class="h4">8. Ваши права</h3>
+
+				<div class="privacy-policy__text">
+					<p>Вы&nbsp;вправе:</p>
+
+					<ul>
+						<li>
+							В&nbsp;любое время отозвать данное ранее согласие на&nbsp;обработку данных;
+						</li>
+
+						<li>
+							Получить информацию о&nbsp;том, обрабатываются&nbsp;ли ваши данные, и&nbsp;какие именно;
+						</li>
+
+						<li>
+							Требовать внесения изменений, если данные неполные, устаревшие или неточные;
+						</li>
+
+						<li>
+							Получить информацию о&nbsp;передаче ваших данных третьим лицам;
+						</li>
+
+						<li>
+							Требовать прекращения обработки и&nbsp;(или) удаления ваших данных;
+						</li>
+					</ul>
+
+					<p>
+						Для реализации этих прав направьте заявление на&nbsp;адрес <a href="mailto:email@email.com" target="_blank"
+							rel="noopener noreferrer">email@email.com</a> или по&nbsp;адресу [почтовый адрес].
+						В&nbsp;заявлении укажите данные, позволяющие вас идентифицировать (ФИО, адрес, дату рождения, номер
+						документа, удостоверяющего личность), суть требования и&nbsp;поставьте подпись. Мы&nbsp;рассмотрим
+						обращение в&nbsp;сроки, установленные законодательством.
+					</p>
+
+					<p>
+						Чтобы удалить свой отзыв с&nbsp;Сайта, напишите на&nbsp;<a href="mailto:email@email.com" target="_blank"
+							rel="noopener noreferrer">email@email.com</a>, указав товар и&nbsp;имя, под которым
+						опубликован отзыв.
+					</p>
+				</div>
+
+				<h3 class="h4">9. Защита данных</h3>
+
+				<div class="privacy-policy__text">
+					<p>
+						Оператор принимает правовые, организационные и&nbsp;технические меры для защиты данных
+						от&nbsp;неправомерного
+						доступа, изменения, распространения и&nbsp;удаления: ограничивает доступ к&nbsp;данным, использует
+						защищённое
+						соединение (HTTPS) и&nbsp;своевременно обновляет программное обеспечение Сайта.
+					</p>
+				</div>
+
+				<h3 class="h4">10. Изменение политики и&nbsp;контакты</h3>
+
+				<div class="privacy-policy__text">
+					<p>
+						Оператор вправе обновлять настоящую политику. Актуальная редакция всегда доступна на&nbsp;этой странице.
+					</p>
+
+					<p>
+						По&nbsp;вопросам обработки персональных данных пишите на&nbsp;<a href="mailto:email@email.com"
+							target="_blank" rel="noopener noreferrer">email@email.com</a>.
+					</p>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="footer fade-in">
+		<div class="parallax-bg parallax-bg--main"
+			style="background: url('./assets/images/footer/footer-bg.webp') no-repeat top center / cover;">
+		</div>
+
+		<div class="parallax-bg parallax-bg--secondary"
+			style="background: url('./assets/images/footer/footer-bg-2.webp') no-repeat top center / cover;">
+		</div>
+
+		<div class="container">
+			<a class="footer__logo logo fade-in" data-delay="200" href="index.html">
+				<img class="logo__image" src="./assets/images/logo-big-red.svg" width="127" height="100" alt="Логотип tortInka">
+			</a>
+
+			<div class="footer__slogan h3 fade-in" data-delay="300">
+				<p>
+					Здесь всё сделано вручную, с&nbsp;теплом и&nbsp;заботой о&nbsp;вас!
+				</p>
+			</div>
+
+			<ul class="footer__connect-list">
+				<li class="contacts-link fade-in" data-delay="200">
+					<a href="https://yandex.by/maps/-/CTBPFJJA" target="_blank" rel="noopener noreferrer">
+						<svg width="44" height="44">
+							<use xlink:href="./assets/images/icons/sprite-icons.svg#location-point">
+							</use>
+						</svg>
+
+						<address>
+							Республика Беларусь, город Гомель
+						</address>
+					</a>
+				</li>
+
+				<li class="contacts-link contacts-link--phone fade-in" data-delay="400">
+					<a href="tel:+375297869845">
+						<svg width="44" height="44">
+							<use xlink:href="./assets/images/icons/sprite-icons.svg#phone-icon">
+							</use>
+						</svg>
+
+						<span>+375 (29) 786-98-45</span>
+					</a>
+				</li>
+
+				<li class="contacts-link fade-in" data-delay="600">
+					<svg width="44" height="44">
+						<use xlink:href="./assets/images/icons/sprite-icons.svg#work-time">
+						</use>
+					</svg>
+
+					<p>
+						Принимаю заказы с&nbsp;<time datetime="09:00">9:00</time>&nbsp;до&nbsp;<time datetime="21:00">21:00</time>
+					</p>
+				</li>
+			</ul>
+
+			<div class="contacts-link contacts-link--document fade-in" data-delay="600">
+				<a href="./assets/images/certificates/certificate-1.webp" target="_blank">
+					<svg width="44" height="44">
+						<use xlink:href="./assets/images/icons/sprite-icons.svg#document">
+						</use>
+					</svg>
+
+					<span>Сертификат кондитера</span>
+				</a>
+			</div>
+
+			<div class="contacts-link contacts-link--privacy-policy fade-in" data-delay="600">
+				<a href="page-privacy-policy.html">
+					<svg width="44" height="44">
+						<use xlink:href="./assets/images/icons/sprite-icons.svg#shield-user">
+						</use>
+					</svg>
+
+					<span>Политика конфеденциальности</span>
+				</a>
+			</div>
+
+			<div class="footer__copyright">
+				<p>
+					© 2026, 𝓘𝓷𝓷𝓪 𝓒𝓱𝓪𝓹𝓵𝓲𝓷𝓪. <span class="accent-font third-accent-color words-no-wrap">Сделано с
+						любовью...</span>
+				</p>
+			</div>
+
+		</div>
+	</footer>
+
+	<script src="./assets/libs/swiper/swiper-bundle.min.js"></script>
+	<script type="module" src="./assets/js/favorites-slider.js"></script>
+	<script type="module" src="assets/js/main.js"></script>
+</body>
+
+</html>
