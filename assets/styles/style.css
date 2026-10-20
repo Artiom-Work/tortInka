@@ -174,6 +174,7 @@ svg * {
   --color-gray-medium: #aeaba4;
   --color-gray-light: #c0c0c0;
   --color-rose: #ae4f74;
+  --color-rose-light: #ff1c73;
   --color-rose-opasity-25: rgba(174, 79, 116, 0.25);
   --color-red: #74062f;
   --color-purple: #870395;
@@ -188,6 +189,7 @@ svg * {
   --color-purple-opasity-50: rgba(135, 3, 149, 0.5);
   --color-purple-opasity-90: rgba(135, 3, 149, 0.9);
   --color-accent: var(--color-rose);
+  --color-accent-light: var(--color-rose-light);
   --color-accent-secondary: var(--color-purple);
   --color-accent-third: var(--color-red);
   --accent-grad: linear-gradient(45deg, var(--color-accent), var(--color-accent-secondary));
@@ -324,7 +326,7 @@ svg * {
 }
 
 /* Custom tortInka's backgrounds */
-.coffee-bg, .product-single__summary, .woocommerce-tabs.wc-tabs-wrapper .tabs.wc-tabs li, .woocommerce-tabs.wc-tabs-wrapper .woocommerce-Tabs-panel .form-submit .submit, .privacy-policy__section, body.privacy-policy main::after {
+.coffee-bg, .product-single__summary, .woocommerce-tabs.wc-tabs-wrapper .tabs.wc-tabs li, .woocommerce-tabs.wc-tabs-wrapper .woocommerce-Tabs-panel .form-submit .submit, .privacy-policy__section {
   background: radial-gradient(ellipse at 82% 42%, #9b7954 0%, rgba(226, 182, 135, 0) 55%), radial-gradient(ellipse at 3% 3%, #2b1603 0%, rgba(43, 22, 3, 0) 45%), radial-gradient(ellipse at 8% 60%, #663806 0%, rgba(102, 56, 6, 0) 50%), linear-gradient(135deg, #3a2004 0%, #8d5816 45%, #b58243 65%, #a4825e 85%, #9b6529 100%) !important;
   background-color: #663806;
 }
@@ -383,10 +385,10 @@ body:has(#menu-switch:checked) .hero__body {
 body:has(dialog:modal) {
   overflow: hidden;
 }
-body:has(h2[id=error-block-title]) main, body:has(h2[id=privary-policy-title]) main, body.privacy-policy main {
+body:has(h2[id=error-block-title]), body:has(h2[id=privary-policy-title]), body.privacy-policy {
   position: relative;
 }
-body:has(h2[id=error-block-title]) main::after, body:has(h2[id=privary-policy-title]) main::after, body.privacy-policy main::after {
+body:has(h2[id=error-block-title])::after, body:has(h2[id=privary-policy-title])::after, body.privacy-policy::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -394,9 +396,11 @@ body:has(h2[id=error-block-title]) main::after, body:has(h2[id=privary-policy-ti
   left: 0;
   top: 0;
   z-index: 2;
-  background: radial-gradient(ellipse at 70% 30%, var(--color-red) 0%, color-mix(in srgb, var(--color-red), transparent 80%) 60%), radial-gradient(ellipse at 20% 80%, var(--color-rose) 0%, color-mix(in srgb, var(--color-rose), transparent 70%) 55%), radial-gradient(ellipse at 90% 90%, var(--color-brown-dark) 0%, color-mix(in srgb, var(--color-brown-dark), transparent 50%) 50%), linear-gradient(135deg, var(--color-dark) 0%, var(--color-brown-dark) 35%, var(--color-red) 70%, var(--color-rose) 100%);
-  background-color: var(--color-dark);
+  background: radial-gradient(ellipse at 82% 42%, #9b7954 0%, rgba(226, 182, 135, 0) 55%), radial-gradient(ellipse at 3% 3%, #2b1603 0%, rgba(43, 22, 3, 0) 45%), radial-gradient(ellipse at 8% 60%, #663806 0%, rgba(102, 56, 6, 0) 50%), linear-gradient(135deg, #3a2004 0%, #8d5816 45%, #b58243 65%, #a4825e 85%, #9b6529 100%) !important;
+  background-color: #663806;
+  filter: brightness(50%);
 }
+
 main {
   flex-grow: 1;
   margin-top: calc(var(--header-height) * -1);
@@ -805,15 +809,110 @@ button[aria-label]::before {
   fill: var(--color-accent);
 }
 
+@media (width <= 26.87375rem) {
+  .contacts-link--privacy-policy a svg {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+}
 /* ===  Styles for custom form === */
 .custom-form label {
   font-size: clamp(0.9375rem, 0.8274647887rem + 0.4694835681vw, 1.25rem);
+  position: relative;
   display: inline-block;
   width: 100%;
   text-align: center;
   font-family: var(--font-family);
   font-weight: 700;
   margin-bottom: 0.625rem;
+}
+.custom-form label:has(input[type=checkbox]) {
+  width: auto !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--color-light) !important;
+  line-height: 1.3 !important;
+  min-height: auto !important;
+  padding-left: 1.875rem !important;
+  margin-bottom: 0.625rem;
+  font-size: 0.9375rem;
+}
+.custom-form label:has(input[type=checkbox]) span {
+  display: block;
+  text-align: start;
+}
+.custom-form label:has(input[type=checkbox])::after {
+  backdrop-filter: none !important;
+}
+.custom-form label:has(input[type=checkbox]) span::after,
+.custom-form label:has(input[type=checkbox]) span::before {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  translate: 0 -50%;
+  cursor: pointer;
+  transition-duration: var(--transition-duration);
+}
+.custom-form label:has(input[type=checkbox]) span::before {
+  width: 1.25rem;
+  height: 1.25rem;
+  content: "";
+  left: 0;
+  background: linear-gradient(45deg, var(--color-brown-dark-opasity-50), var(--color-black-opasity-50));
+  border-radius: var(--border-radius-extra-small);
+}
+.custom-form label:has(input[type=checkbox]) span::after {
+  content: "✔";
+  left: 0.3125rem;
+  font-size: 0;
+  color: transparent;
+}
+.custom-form label:has(input[type=checkbox]) input[type=checkbox] {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+.custom-form label:has(input[type=checkbox]) a {
+  display: inline-block;
+  position: relative;
+  color: var(--color-accent-light);
+}
+.custom-form label:has(input[type=checkbox]) a::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  translate: -50%;
+  width: 0;
+  height: 0.0625rem;
+  background-color: currentColor;
+  transition-duration: inherit;
+  box-shadow: var(--accent-text-shadow);
+}
+@media (any-hover: hover) {
+  .custom-form label:has(input[type=checkbox]) a:hover::after {
+    width: 100%;
+  }
+}
+@media (any-hover: hover) and (any-hover: none) {
+  .custom-form label:has(input[type=checkbox]) a:active::after {
+    width: 100%;
+  }
+}
+.custom-form label:has(input[type=checkbox]) a:active {
+  scale: 0.98;
+  filter: brightness(80%);
+}
+.custom-form label:has(input[type=checkbox]:checked) span::after {
+  color: var(--color-light);
+  font-size: 0.875rem;
 }
 .custom-form input,
 .custom-form textarea {
@@ -855,6 +954,11 @@ button[aria-label]::before {
   box-shadow: var(--box-shadow-dark-blur);
 }
 
+@media (width <= 81.24875rem) {
+  .custom-form label:has(input[type=checkbox]) {
+    font-size: 0.8125rem;
+  }
+}
 @media (width <= 63.99875rem) {
   .custom-form label,
   .custom-form input,
@@ -869,6 +973,13 @@ button[aria-label]::before {
     font-size: 0.875rem;
     padding: 0.3125rem;
     line-height: 1.2;
+  }
+  .custom-form label:has(input[type=checkbox]) {
+    padding-left: 1.25rem !important;
+  }
+  .custom-form label:has(input[type=checkbox]) span {
+    max-width: 13.75rem;
+    text-align: center;
   }
   .custom-form__button {
     padding-block: 0.625rem;
@@ -2498,10 +2609,13 @@ button[aria-label]::before {
     flex-direction: column-reverse;
     text-align: center;
   }
+  .callback-order__form:not(.callback-order__form--contacts-block) {
+    padding-top: clamp(4.375rem, 3.7147887324rem + 2.8169014085vw, 6.25rem);
+  }
 }
 @media (width <= 47.99875rem) {
   .callback-order {
-    --calbackOrderSectionHeight: 30rem;
+    --calbackOrderSectionHeight: 31.25rem;
   }
   .callback-order__image-wrapper {
     border-radius: var(--border-radius);
@@ -2550,7 +2664,7 @@ body.privacy-policy main {
   margin-bottom: clamp(1.875rem, 1.2147887324rem + 2.8169014085vw, 3.75rem);
   text-shadow: var(--accent-text-shadow);
 }
-.privacy-policy__text::after {
+.privacy-policy__text:not(:last-child)::after {
   content: "";
   position: absolute;
   bottom: clamp(-1.25rem, -1.0299295775rem + -0.9389671362vw, -1.875rem);
@@ -2563,6 +2677,18 @@ body.privacy-policy main {
 .privacy-policy__text ul {
   list-style: disc;
   padding-left: 1.25rem;
+}
+.privacy-policy h1 {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
 }
 .privacy-policy h2,
 .privacy-policy h3,

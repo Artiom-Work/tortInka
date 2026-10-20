@@ -15,6 +15,7 @@
   --color-gray-medium: #aeaba4;
   --color-gray-light: #c0c0c0;
   --color-rose: #ae4f74;
+  --color-rose-light: #ff1c73;
   --color-rose-opasity-25: rgba(174, 79, 116, 0.25);
   --color-red: #74062f;
   --color-purple: #870395;
@@ -31,6 +32,7 @@
   --color-purple-opasity-90: rgba(135, 3, 149, 0.9);
 
   --color-accent: var(--color-rose);
+  --color-accent-light: var(--color-rose-light);
   --color-accent-secondary: var(--color-purple);
   --color-accent-third: var(--color-red);
 

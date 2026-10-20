@@ -756,8 +756,8 @@
 				</div>
 
 				<div class="contacts__action callback-order brand-bg fade-in" data-delay="400">
-					<form class="callback-order__form custom-form" action="" data-ajax-form data-success-modal="succSubmitModal"
-						data-error-modal="errorSubmitModal">
+					<form class="callback-order__form callback-order__form--contacts-block custom-form" action="" data-ajax-form
+						data-success-modal="succSubmitModal" data-error-modal="errorSubmitModal">
 						<span>
 							<label for="userName">Как к&nbsp;вам лучше обращаться?</label>
 
@@ -776,6 +776,18 @@
 
 							<textarea id="userNote" name="note"
 								placeholder="Можно указать название угощения, дату приготовления, пожелания к упаковке, особенности декора и прочее..."></textarea>
+						</span>
+
+						<span>
+							<label>
+								<input type="checkbox" required>
+
+								<span>Согласен(на) с
+									<a href="page-privacy-policy.html">политикой</a>
+									конфиденциальности
+								</span>
+
+							</label>
 						</span>
 
 						<button class="custom-form__button button button--accent preloader-block preloader-block--xs" type="submit"
@@ -1281,6 +1293,19 @@
 							<textarea id="customerNote" name="note"
 								placeholder="Можно указать название торта, дату приготовления, пожелания к упаковке, особенности декора и прочее..."></textarea>
 						</span>
+
+						<span>
+							<label>
+								<input type="checkbox" required>
+
+								<span>Согласен(на) с
+									<a href="page-privacy-policy.html">политикой</a>
+									конфиденциальности
+								</span>
+
+							</label>
+						</span>
+
 						<button class="custom-form__button button preloader-block preloader-block--xs" type="submit"
 							title="Отправить заявку на обратный звонок">
 							Отправить заявку

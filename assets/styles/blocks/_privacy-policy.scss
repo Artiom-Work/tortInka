@@ -23,7 +23,7 @@ body.privacy-policy {
     margin-bottom: fluid(60, 30);
     text-shadow: var(--accent-text-shadow);
 
-    &::after {
+    &:not(:last-child)::after {
       content: "";
       position: absolute;
       bottom: fluid(-30, -20);
@@ -43,6 +43,9 @@ body.privacy-policy {
       list-style: disc;
       padding-left: rem(20);
     }
+  }
+  h1 {
+    @include visually-hidden;
   }
 
   h2,

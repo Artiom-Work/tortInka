@@ -56,3 +56,13 @@
     }
   }
 }
+@include mobile-s-media {
+  .contacts-link {
+    &--privacy-policy {
+      a svg {
+        width: rem(30);
+        height: rem(30);
+      }
+    }
+  }
+}
